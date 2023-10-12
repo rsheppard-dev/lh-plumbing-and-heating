@@ -6,8 +6,8 @@ import { sanityFetch } from '@/sanity/lib/sanityFetch';
 export default async function AboutPage() {
 	const data = await sanityFetch<IAbout>({ query: aboutQuery });
 	return (
-		<main className='container pt-32 px-4'>
+		<div className='container pt-32 px-4'>
 			<AboutSection type='page' data={data} />
-		</main>
+		</div>
 	);
 }

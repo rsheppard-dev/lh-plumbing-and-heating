@@ -39,11 +39,11 @@ export default async function Home() {
 		);
 	}
 	return (
-		<main>
+		<>
 			<HeroSection data={homeData} />
 			<AboutSection data={aboutData} />
 			<Certifications data={certificationData} />
 			<ServicesSection data='' />
-		</main>
+		</>
 	);
 }
