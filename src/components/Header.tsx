@@ -100,7 +100,7 @@ export default function Header({ settings }: Props) {
 					<Logo title='LH Plumbing & Heating Logo' className='h-10 block' />
 				</Link>
 
-				<MobileMenu />
+				{/* <MobileMenu /> */}
 
 				<NavMenu />
 			</div>

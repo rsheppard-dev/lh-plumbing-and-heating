@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import '../globals.css';
 import Header from '@/components/Header';
 import ISettings from '@/interfaces/ISettings';
@@ -15,6 +16,27 @@ const sourceSans = Source_Sans_3({
 	variable: '--font-source-sans',
 });
 
+export async function generateMetadata() {
+	const { metaTitle, metaDescription, ogImage } = await sanityFetch<ISettings>({
+		query: settingsQuery,
+	});
+
+	return {
+		metadataBase: new URL('http://localhost:3000'),
+		title: {
+			default: metaTitle,
+			template: `%s | ${metaTitle}`,
+		},
+		description: metaDescription,
+		openGraph: {
+			images: [ogImage?.url],
+		},
+		robots: {
+			index: false,
+		},
+	};
+}
+
 export const revalidate = 60;
 
 type Props = {
@@ -27,10 +49,11 @@ export default async function RootLayout({ children }: Props) {
 	return (
 		<html lang='en'>
 			<body
-				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50`}
+				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50 flex flex-col min-h-screen`}
 			>
 				<Header settings={settings} />
-				{children}
+				<main className='grow'>{children}</main>
+				<Footer />
 			</body>
 		</html>
 	);
