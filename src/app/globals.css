@@ -10,7 +10,7 @@
 
 @layer components {
 	.slider-button {
-		@apply opacity-0 enabled:group-hover:opacity-100 disabled:opacity-30 rounded-full p-4 bg-brand-yellow bg-opacity-30 enabled:hover:bg-opacity-60 transition-opacity;
+		@apply opacity-0 enabled:group-hover:opacity-100 disabled:opacity-30 rounded-full p-4 bg-opacity-30 bg-brand-yellow enabled:hover:bg-opacity-60 transition-opacity;
 	}
 }
 

@@ -9,10 +9,12 @@ import { ReactNode } from 'react';
 
 const montserrat = Montserrat({
 	subsets: ['latin'],
+	display: 'swap',
 	variable: '--font-montserrat',
 });
 const sourceSans = Source_Sans_3({
 	subsets: ['latin'],
+	display: 'swap',
 	variable: '--font-source-sans',
 });
 

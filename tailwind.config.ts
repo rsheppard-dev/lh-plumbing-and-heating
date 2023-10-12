@@ -8,9 +8,8 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
-				'brand-yellow': '#F0C808',
-				'brand-blue': '#0366A9',
-				'brand-orange': '#F07022',
+				'brand-yellow': '#f0c808',
+				'brand-blue': '#0366a9',
 			},
 			fontFamily: {
 				montserrat: ['var(--font-montserrat)'],

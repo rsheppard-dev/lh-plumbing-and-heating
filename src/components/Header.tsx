@@ -1,5 +1,5 @@
 import { Logo } from './SVG';
-// import MobileMenu from './MobileMenu';
+import MobileMenu from './MobileMenu';
 import NavMenu from './NavMenu';
 import Link from 'next/link';
 import ISettings from '@/interfaces/ISettings';
@@ -100,7 +100,7 @@ export default function Header({ settings }: Props) {
 					<Logo title='LH Plumbing & Heating Logo' className='h-10 block' />
 				</Link>
 
-				{/* <MobileMenu /> */}
+				<MobileMenu />
 
 				<NavMenu />
 			</div>
