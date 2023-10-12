@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import '../globals.css';
+import './globals.css';
 import Header from '@/components/Header';
 import ISettings from '@/interfaces/ISettings';
 import { settingsQuery } from '@/sanity/lib/queries';
