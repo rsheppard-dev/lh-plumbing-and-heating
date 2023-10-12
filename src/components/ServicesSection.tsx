@@ -18,7 +18,7 @@ export default function ServicesSection({ data }: Props) {
 
 			<div className='relative overflow-hidden'>
 				<div className='absolute inset-y-0 -left-12 w-full md:w-1/2 bg-brand-yellow -skew-x-12'></div>
-				<div className='relative z-10'>
+				<div className='relative'>
 					<Wrapper className='py-4'>
 						<h3 className='font-bold font-montserrat text-zinc-900 text-2xl'>
 							How can we help you?

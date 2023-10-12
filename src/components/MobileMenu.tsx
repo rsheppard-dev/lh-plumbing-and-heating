@@ -26,7 +26,7 @@ export default function MobileMenu() {
 				leaveTo='opacity-0 translate-x-72'
 				className='absolute top-0 right-0'
 			>
-				<Popover.Panel className='w-72 border-l-8 border-yellow-300 bg-brand-yellow flex flex-col p-4 text-gray-900 min-h-screen'>
+				<Popover.Panel className='w-72 border-l-8 border-yellow-300 bg-brand-yellow flex flex-col p-4 text-zinc-900 min-h-screen'>
 					<Popover.Button title='Close Menu' className='self-end text-8xl px-4'>
 						<FaWindowClose
 							aria-hidden

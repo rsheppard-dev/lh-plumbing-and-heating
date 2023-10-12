@@ -25,7 +25,7 @@ export default async function Hero({ data }: { data: IHomePage }) {
 					<div className='flex flex-col sm:flex-row w-fit gap-4'>
 						<Link
 							href={primaryButtonLink}
-							className='whitespace-nowrap bg-brand-yellow bg-opacity-60 border-2 border-brand-yellow hover:bg-opacity-100 font-montserrat text-gray-900 font-bold text-lg px-6 py-3 transition-opacity'
+							className='whitespace-nowrap bg-brand-yellow bg-opacity-60 border-2 border-brand-yellow hover:bg-opacity-100 font-montserrat text-zinc-900 font-bold text-lg px-6 py-3 transition-opacity'
 						>
 							{primaryButtonText}
 						</Link>
