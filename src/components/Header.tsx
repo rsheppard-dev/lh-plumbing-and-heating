@@ -1,5 +1,5 @@
 import { Logo } from './SVG';
-import MobileMenu from './MobileMenu';
+// import MobileMenu from './MobileMenu';
 import NavMenu from './NavMenu';
 import Link from 'next/link';
 import ISettings from '@/interfaces/ISettings';
