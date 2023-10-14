@@ -16,27 +16,22 @@ type Props = {
 export default function Footer({ settings }: Props) {
 	return (
 		<footer className='bg-brand-yellow w-full'>
-			<Wrapper className='relative py-4 space-y-6'>
-				<div className='flex items-center'>
-					<div className='space-y-2 grow'>
-						<h4 className='block font-bold font-montserrat text-brand-blue'>
-							Site Map
-						</h4>
-						{pages.map(page => (
-							<Link
-								href={page.url}
-								key={page.title}
-								className='block w-fit font-sourceSans text-sm font-bold text-zinc-800 hover:underline'
-							>
-								{page.title}
-							</Link>
-						))}
-					</div>
-
-					<div className='grow relative -left-16'>
-						<Logo aria-hidden className='w-32' />
-					</div>
+			<Wrapper className='py-4 space-y-6'>
+				<div>
+					<Logo aria-hidden className='w-32 mx-auto' />
 				</div>
+
+				<nav className='flex flex-wrap justify-between md:justify-start gap-4'>
+					{pages.map(page => (
+						<Link
+							href={page.url}
+							key={page.title}
+							className='font-sourceSans text-sm font-bold text-zinc-800 hover:underline'
+						>
+							{page.title}
+						</Link>
+					))}
+				</nav>
 
 				<div className='flex flex-wrap items-center gap-2 justify-center md:justify-between'>
 					<div className='flex flex-wrap justify-center gap-x-4 gap-y-2 items-center'>

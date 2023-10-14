@@ -39,7 +39,10 @@ export default function AboutSection({ type = 'section', data }: Props) {
 					) : (
 						<>
 							<h2 className='flex items-center gap-4'>
-								<div aria-hidden='true' className='bg-brand-yellow h-1 w-10' />
+								<div
+									aria-hidden='true'
+									className='hidden sm:block bg-brand-yellow h-1 w-10'
+								/>
 								<span className='text-zinc-400 whitespace-nowrap text-sm md:text-base font-montserrat font-bold'>
 									{subheading}
 								</span>

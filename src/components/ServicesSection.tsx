@@ -13,7 +13,10 @@ export default async function ServicesSection({ data }: Props) {
 		<section className='py-10'>
 			<Wrapper>
 				<h2 className='flex items-center gap-4 mb-4'>
-					<div aria-hidden='true' className='bg-brand-yellow h-1 w-10' />
+					<div
+						aria-hidden='true'
+						className='hidden sm:block bg-brand-yellow h-1 w-10'
+					/>
 					<span className='text-zinc-400 text-sm md:text-base font-montserrat font-bold'>
 						{subheading}
 					</span>
@@ -31,7 +34,7 @@ export default async function ServicesSection({ data }: Props) {
 				</div>
 			</div>
 
-			<Wrapper className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10'>
+			<Wrapper className='grid auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10'>
 				{services.map(service => (
 					<ServicesCard
 						key={service.name}
