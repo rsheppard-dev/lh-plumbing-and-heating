@@ -18,7 +18,7 @@ const sourceSans = Source_Sans_3({
 	variable: '--font-source-sans',
 });
 
-export const revalidate = 60;
+export const revalidate = 5;
 
 type Props = {
 	children: ReactNode;

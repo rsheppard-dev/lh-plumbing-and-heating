@@ -30,6 +30,16 @@ export const aboutQuery = groq`*[_type == "about"][0]{
             }
         }`;
 
+export const serviceQuery = groq`*[_type == "service"][0]{
+            subheading,
+            heading,
+            services[]{
+              name,
+                "icon": icon.asset->url,
+                body
+            }
+        }`;
+
 export const certificationQuery = groq`*[_type == "certification"]{
             title,
             logo{

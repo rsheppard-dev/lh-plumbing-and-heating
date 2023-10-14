@@ -2,7 +2,14 @@ import { defineConfig } from 'sanity';
 import { StructureBuilder, deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
 import { googleMapsInput } from '@sanity/google-maps-input';
-import { FaCog, FaHome, FaStar, FaBuilding, FaMedal } from 'react-icons/fa';
+import {
+	FaCog,
+	FaHome,
+	FaStar,
+	FaBuilding,
+	FaMedal,
+	FaTools,
+} from 'react-icons/fa';
 import types from '@/sanity/schemas';
 import { media } from 'sanity-plugin-media';
 
@@ -18,7 +25,7 @@ const singletonActions = new Set([
 	'preview',
 ]);
 
-const singletonTypes = new Set(['homePage', 'about', 'settings']);
+const singletonTypes = new Set(['homePage', 'about', 'service', 'settings']);
 
 const singletonListItem = (
 	S: StructureBuilder,
@@ -45,6 +52,7 @@ const config = defineConfig({
 					.items([
 						singletonListItem(S, 'homePage', 'Home Section').icon(FaHome),
 						singletonListItem(S, 'about', 'About Section').icon(FaBuilding),
+						singletonListItem(S, 'service', 'Service Section').icon(FaTools),
 
 						S.divider(),
 

@@ -1,49 +1,44 @@
 'use client';
 
-import { useLottie, useLottieInteractivity } from 'lottie-react';
-import animationData from '../assets/plumbing-icon.json';
+import { useAnimationData } from '@/hooks/useAnimationData';
+import { PortableText } from '@portabletext/react';
+import Lottie, { LottieRefCurrentProps } from 'lottie-react';
+import { useRef } from 'react';
+import { PortableTextBlock } from 'sanity';
 
-const style = {
-	height: 300,
-	border: 3,
-	borderStyle: 'solid',
-	borderRadius: 7,
+type Props = {
+	title: string;
+	icon: string;
+	body: PortableTextBlock[];
 };
 
-const options = {
-	animationData,
-};
+export default function ServicesCard({ title, icon, body }: Props) {
+	const lottieRef = useRef<LottieRefCurrentProps>(null);
 
-const PlaySegmentsOnHover = () => {
-	const lottieObj = useLottie(options, style);
-	const Animation = useLottieInteractivity({
-		lottieObj,
-		mode: 'cursor',
-		actions: [
-			{
-				position: { x: [0, 1], y: [0, 1] },
-				type: 'loop',
-				frames: [45, 60],
-			},
-			{
-				position: { x: -1, y: -1 },
-				type: 'stop',
-				frames: [45],
-			},
-		],
-	});
+	const [animationData] = useAnimationData(icon);
 
-	return Animation;
-};
+	function playAnimation() {
+		lottieRef.current && lottieRef.current.play();
+	}
 
-export default function ServicesCard() {
+	function stopAnimation() {
+		lottieRef.current && lottieRef.current.stop();
+	}
 	return (
-		<div className='col-span-4 bg-white shadow h-full space-y-4 px-6 py-3'>
-			<h3 className='font-bold font-montserrat text-zinc-900'>Plumbing</h3>
-			{PlaySegmentsOnHover()}
-			<div className='font-sourceSans text-zinc-600'>
-				Bathrooms, shower rooms, wet rooms, water softeners, water filters,
-				waste disposers, drains, and general maintenance.
+		<div
+			onMouseEnter={playAnimation}
+			onMouseLeave={stopAnimation}
+			className='bg-white shadow-md h-full space-y-4 px-6 py-3'
+		>
+			<h3 className='font-bold font-montserrat text-zinc-900'>{title}</h3>
+			<Lottie
+				lottieRef={lottieRef}
+				animationData={animationData}
+				autoplay={false}
+				className='w-20'
+			/>
+			<div className='font-sourceSans text-zinc-600 prose'>
+				<PortableText value={body} />
 			</div>
 		</div>
 	);
