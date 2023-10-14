@@ -2,17 +2,18 @@ import pages from '@/sanity/schemas/pages';
 import { Logo } from './SVG';
 import Wrapper from './Wrapper';
 import Link from 'next/link';
-import { sanityFetch } from '@/sanity/lib/sanityFetch';
-import ISettings from '@/interfaces/ISettings';
-import { settingsQuery } from '@/sanity/lib/queries';
 import {
 	HiOutlineLocationMarker,
 	HiOutlineMail,
 	HiOutlinePhone,
 } from 'react-icons/hi';
+import ISettings from '@/interfaces/ISettings';
 
-export default async function Footer() {
-	const settings = await sanityFetch<ISettings>({ query: settingsQuery });
+type Props = {
+	settings: ISettings;
+};
+
+export default function Footer({ settings }: Props) {
 	return (
 		<footer className='bg-brand-yellow w-full'>
 			<Wrapper className='relative py-4 space-y-6'>

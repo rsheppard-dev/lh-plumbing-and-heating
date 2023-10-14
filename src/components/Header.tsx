@@ -8,12 +8,12 @@ import MobileMenu from './MobileMenu';
 import NavMenu from './NavMenu';
 import Link from 'next/link';
 import ISettings from '@/interfaces/ISettings';
-import { sanityFetch } from '@/sanity/lib/sanityFetch';
-import { settingsQuery } from '@/sanity/lib/queries';
 
-export default async function Header() {
-	const settings = await sanityFetch<ISettings>({ query: settingsQuery });
+type Props = {
+	settings: ISettings;
+};
 
+export default function Header({ settings }: Props) {
 	return (
 		<header className='fixed inset-x-0 z-10'>
 			<div className='bg-brand-blue flex items-center px-6 text-white justify-between h-10'>

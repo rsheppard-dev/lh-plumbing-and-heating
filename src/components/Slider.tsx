@@ -26,23 +26,23 @@ export default function Slider({ images, timer, children }: Props) {
 			>
 				{images.map((_, index) => (
 					<div key={index} className='relative h-full w-full grow-0 shrink-0'>
-						<figure
-							aria-hidden={index !== slideIndex}
-							className='z-10 absolute inset-0'
-						>
+						<figure aria-hidden className='z-10 absolute inset-0'>
 							<Image
 								priority={index === 0}
 								fill
 								src={urlFor(images[index].url)
 									.quality(70)
-									.width(7)
+									.width(20)
 									.auto('format')
 									.url()}
 								alt={images[index].alt}
 								className='object-cover object-center w-full h-full'
 							/>
 						</figure>
-						<figure aria-hidden className='z-10 absolute inset-0'>
+						<figure
+							aria-hidden={index !== slideIndex}
+							className='z-10 absolute inset-0'
+						>
 							<Image
 								priority={index === 0}
 								fill

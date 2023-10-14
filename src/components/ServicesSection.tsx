@@ -1,3 +1,4 @@
+import ServicesCard from './ServicesCard';
 import Wrapper from './Wrapper';
 
 type Props = {
@@ -16,7 +17,7 @@ export default function ServicesSection({ data }: Props) {
 				</h2>
 			</Wrapper>
 
-			<div className='relative overflow-hidden'>
+			<div className='relative overflow-hidden mb-10'>
 				<div className='absolute inset-y-0 -left-12 w-full md:w-1/2 bg-brand-yellow -skew-x-12'></div>
 				<div className='relative'>
 					<Wrapper className='py-4'>
@@ -26,6 +27,10 @@ export default function ServicesSection({ data }: Props) {
 					</Wrapper>
 				</div>
 			</div>
+
+			<Wrapper className='grid grid-cols-12 gap-4'>
+				<ServicesCard />
+			</Wrapper>
 		</section>
 	);
 }
