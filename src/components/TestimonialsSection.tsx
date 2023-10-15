@@ -39,7 +39,7 @@ export default function TestimonialsSection({ data }: Props) {
 									<span className='block font-sourceSans font-bold text-zinc-900'>
 										{testimonial.name}
 									</span>
-									<span className='block font-sourceSans text-zinc-600'>
+									<span className='block font-sourceSans text-zinc-600 text-sm'>
 										{formattedDate}
 									</span>
 								</div>
