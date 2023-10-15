@@ -15,7 +15,7 @@ export default async function Hero({ data }: { data: IHomePage }) {
 	} = data;
 
 	return (
-		<section aria-label='Hero Section' className='pt-10'>
+		<section aria-label='Hero Section' className='pt-10 mb-10'>
 			<Slider images={sliderImages} timer={autoSlide ? timer : undefined}>
 				<div className='flex flex-col gap-8'>
 					<h1 className='lg:w-2/3 xl:w-1/2 font-montserrat balance font-bold text-3xl md:text-4xl text-white leading-snug drop-shadow-md'>

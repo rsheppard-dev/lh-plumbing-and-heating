@@ -6,6 +6,7 @@ import {
 	certificationQuery,
 	homeQuery,
 	serviceQuery,
+	testimonialQuery,
 } from '@/sanity/lib/queries';
 import { draftMode } from 'next/headers';
 import PreviewProvider from '@/components/PreviewProvider';
@@ -17,6 +18,8 @@ import Certifications from '@/components/Certifications';
 import ICertification from '@/interfaces/ICertification';
 import ServicesSection from '@/components/ServicesSection';
 import IService from '@/interfaces/IService';
+import ITestimonial from '@/interfaces/ITestimonial';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 export default async function Home() {
 	const homePromise = sanityFetch<IHomePage>({ query: homeQuery });
@@ -27,14 +30,23 @@ export default async function Home() {
 	const servicesPromise = sanityFetch<IService>({
 		query: serviceQuery,
 	});
+	const testimonialsPromise = sanityFetch<ITestimonial[]>({
+		query: testimonialQuery,
+	});
 
-	const [homeData, aboutData, certificationData, servicesData] =
-		await Promise.all([
-			homePromise,
-			aboutPromise,
-			certificationPromise,
-			servicesPromise,
-		]);
+	const [
+		homeData,
+		aboutData,
+		certificationData,
+		servicesData,
+		testimonialsData,
+	] = await Promise.all([
+		homePromise,
+		aboutPromise,
+		certificationPromise,
+		servicesPromise,
+		testimonialsPromise,
+	]);
 	const isDraftMode = draftMode().isEnabled;
 
 	if (isDraftMode && token) {
@@ -50,6 +62,7 @@ export default async function Home() {
 			<HeroSection data={homeData} />
 			<AboutSection data={aboutData} />
 			<Certifications data={certificationData} />
+			<TestimonialsSection data={testimonialsData} />
 			<ServicesSection data={servicesData} />
 		</>
 	);

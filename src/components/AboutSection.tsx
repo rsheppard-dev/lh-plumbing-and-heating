@@ -13,7 +13,10 @@ type Props = {
 export default function AboutSection({ type = 'section', data }: Props) {
 	const { subheading, heading, content, image } = data;
 	return (
-		<Wrapper title='About Section' className='py-10'>
+		<Wrapper
+			title='About Section'
+			className={`${type === 'page' ? 'pt-32 pb-10' : 'mb-10'}`}
+		>
 			<div className='grid grid-cols-12 space-y-6 lg:space-y-0 lg:space-x-6 justify-center'>
 				<div className='col-span-12 lg:col-span-6 space-y-6'>
 					{type === 'page' ? (

@@ -6,11 +6,12 @@ import useSlider from '@/hooks/useSlider';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import urlFor from '@/sanity/lib/imageBuilder';
 import Wrapper from './Wrapper';
+import { ReactNode } from 'react';
 
 type Props = {
 	images: IImage[];
 	timer?: number;
-	children: React.ReactNode;
+	children: ReactNode;
 };
 
 export default function Slider({ images, timer, children }: Props) {
@@ -46,7 +47,10 @@ export default function Slider({ images, timer, children }: Props) {
 							<Image
 								priority={index === 0}
 								fill
-								src={urlFor(images[index].url).auto('format').url()}
+								src={urlFor(images[index].url)
+									.auto('format')
+									.quality(100)
+									.url()}
 								alt={images[index].alt}
 								className='object-cover object-center w-full h-full'
 							/>

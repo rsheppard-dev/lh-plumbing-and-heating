@@ -9,12 +9,12 @@ type Props = {
 
 export default function Certifications({ data, background = true }: Props) {
 	return (
-		<section className={`w-full ${background && 'bg-brand-yellow'} py-6`}>
+		<section className={`w-full ${background && 'bg-brand-yellow'} py-6 mb-10`}>
 			<Wrapper>
 				<div className='flex flex-wrap gap-4 justify-between sm:justify-end items-center'>
-					{data.map((certification, i) => (
+					{data.map(certification => (
 						<div
-							key={i}
+							key={certification._id}
 							className={`relative ${
 								certification.logo.width > certification.logo.height
 									? 'w-20'

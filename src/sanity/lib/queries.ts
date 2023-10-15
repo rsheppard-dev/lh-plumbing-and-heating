@@ -41,6 +41,7 @@ export const serviceQuery = groq`*[_type == "service"][0]{
         }`;
 
 export const certificationQuery = groq`*[_type == "certification"]{
+            _id,
             title,
             logo{
                 "url": asset->url,
@@ -49,6 +50,13 @@ export const certificationQuery = groq`*[_type == "certification"]{
                 "width": asset->metadata.dimensions.width,
                 "size": asset->size
             }
+        }`;
+
+export const testimonialQuery = groq`*[_type == "testimonial"]{
+            _id,
+            name,
+            reviewDate,
+            content
         }`;
 
 export const settingsQuery = groq`*[_id == "settings"][0]{
