@@ -30,12 +30,12 @@ export default function TestimonialsSection({ data }: Props) {
 								aria-hidden
 								className='absolute left-10 -top-3 drop-shadow w-10 h-10 fill-brand-yellow'
 							/>
-							<article className='mx-10 sm:mx-20 my-10'>
+							<article className='m-10'>
 								<PortableText value={testimonial.content} />
 							</article>
 
 							<div className='flex bg-brand-yellow overflow-hidden mb-10'>
-								<div className='px-10 sm:px-20 py-2 leading-tight'>
+								<div className='px-10 py-2 leading-tight'>
 									<span className='block font-sourceSans font-bold text-zinc-900'>
 										{testimonial.name}
 									</span>
@@ -51,10 +51,10 @@ export default function TestimonialsSection({ data }: Props) {
 			</div>
 
 			<div className='flex gap-2 justify-center items-center'>
-				<span className='w-4 h-4 rounded-full bg-zinc-400'></span>
-				<span className='w-4 h-4 rounded-full bg-zinc-400'></span>
-				<span className='w-4 h-4 rounded-full bg-zinc-400'></span>
-				<span className='w-4 h-4 rounded-full bg-zinc-400'></span>
+				<button className='w-4 h-4 rounded-full bg-zinc-400'></button>
+				<button className='w-4 h-4 rounded-full bg-zinc-400'></button>
+				<button className='w-4 h-4 rounded-full bg-zinc-400'></button>
+				<button className='w-4 h-4 rounded-full bg-zinc-400'></button>
 			</div>
 		</Wrapper>
 	);
