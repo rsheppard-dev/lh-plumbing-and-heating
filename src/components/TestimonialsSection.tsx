@@ -69,7 +69,7 @@ export default function TestimonialsSection({ data }: Props) {
 									className='fill-brand-yellow h-4 w-4'
 								/>
 							</div>
-							<article className='mx-10 mb-10 grow line-clamp-3'>
+							<article className='mx-10 mb-10 grow line-clamp-5 md:line-clamp-3'>
 								{short}
 							</article>
 
