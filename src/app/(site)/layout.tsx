@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: Props) {
 	return (
 		<html lang='en'>
 			<body
-				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50 flex flex-col min-h-screen`}
+				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50 flex flex-col min-h-screen overflow-x-hidden`}
 			>
 				<Header settings={settings} />
 				<main className='grow'>{children}</main>
