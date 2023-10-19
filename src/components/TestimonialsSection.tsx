@@ -24,7 +24,6 @@ export default function TestimonialsSection({ data }: Props) {
 		setIsOpenArray(updatedIsOpenArray);
 	}
 
-	// Function to close a specific modal
 	function closeModal(index: number) {
 		const updatedIsOpenArray = [...isOpenArray];
 		updatedIsOpenArray[index] = false;
