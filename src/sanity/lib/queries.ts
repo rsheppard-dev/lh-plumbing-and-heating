@@ -56,6 +56,7 @@ export const testimonialQuery = groq`*[_type == "testimonial"]{
             _id,
             name,
             reviewDate,
+            rating,
             content
         }`;
 

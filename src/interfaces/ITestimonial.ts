@@ -6,5 +6,6 @@ export default interface ITestimonial {
 	_createdAt: Date;
 	name: string;
 	reviewDate: Date;
+	rating: number;
 	content: PortableTextBlock[];
 }

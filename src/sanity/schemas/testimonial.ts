@@ -21,6 +21,18 @@ const testimonial = defineType({
 			validation: Rule => Rule.required(),
 		}),
 		defineField({
+			title: 'Star Rating',
+			description: 'How many stars out of 5?',
+			name: 'rating',
+			type: 'number',
+			initialValue: 5,
+			options: {
+				list: [1, 2, 3, 4, 5],
+				layout: 'dropdown',
+			},
+			validation: Rule => Rule.required(),
+		}),
+		defineField({
 			title: 'Testimonial',
 			name: 'content',
 			type: 'array',
