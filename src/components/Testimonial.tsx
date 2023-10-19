@@ -74,7 +74,7 @@ export default function Testimonial({
 										/>
 									</button>
 								</div>
-								<article className='px-10 mb-10 grow prose max-w-none w-full'>
+								<article className='px-10 mb-10 text-left grow prose max-w-none w-full'>
 									<PortableText value={testimonial.content} />
 								</article>
 
@@ -121,16 +121,16 @@ export default function Testimonial({
 					<PortableText value={testimonial.content} />
 				</article>
 
-				<div className='flex bg-brand-yellow overflow-hidden mb-10'>
+				<div className='flex bg-brand-yellow overflow-hidden mb-10 w-full'>
 					<div className='px-10 py-2 leading-tight'>
-						<span className='block font-sourceSans font-bold text-zinc-900'>
+						<span className='block text-start font-sourceSans font-bold text-zinc-900'>
 							{testimonial.name}
 						</span>
-						<span className='block font-sourceSans text-zinc-600 text-sm'>
+						<span className='block text-start font-sourceSans text-zinc-600 text-sm'>
 							{formattedDate}
 						</span>
 					</div>
-					<div className='grow bg-white -skew-x-12 relative -right-10' />
+					<div className='grow bg-white h-full -skew-x-12 relative -right-10' />
 				</div>
 			</button>
 		</>
