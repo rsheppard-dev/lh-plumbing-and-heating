@@ -19,9 +19,9 @@ export default function TestimonialsSection({ data }: Props) {
 		<Wrapper className='relative mb-10 w-full overflow-x-clip'>
 			<div
 				style={{
-					transform: `translateX(calc(-${slideIndex * (100 + 1)}%))`,
+					transform: `translateX(calc(-${slideIndex * 101}%))`,
 				}}
-				className='w-full flex gap-4 transition-transform duration-300 ease-in-out'
+				className='w-full flex gap-[1%] transition-transform duration-300 ease-in-out'
 			>
 				{data.map((testimonial, i) => (
 					<Testimonial
