@@ -36,6 +36,7 @@ export default function ServicesCard({ title, icon, body }: Props) {
 					lottieRef={lottieRef}
 					animationData={animationData}
 					autoplay={false}
+					className='w-fit'
 				/>
 			</div>
 			<div className='font-sourceSans text-zinc-600 prose'>
