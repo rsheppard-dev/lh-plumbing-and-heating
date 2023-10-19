@@ -25,6 +25,7 @@ export default function Testimonial({
 		month: 'long',
 	} as Intl.DateTimeFormatOptions;
 	const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(date);
+
 	return (
 		<>
 			<Dialog
@@ -97,7 +98,7 @@ export default function Testimonial({
 			<button
 				aria-hidden={i !== slideIndex}
 				onClick={() => setIsOpen(!isOpen)}
-				className='flex hover:shadow-lg transition-all flex-col bg-white shadow-md grow-0 shrink-0 min-w-full prose font-sourceSans text-zinc-600 mb-10'
+				className='flex w-full hover:shadow-lg transition-all flex-col bg-white shadow-md grow-0 shrink-0 min-w-full prose font-sourceSans text-zinc-600 mb-10'
 			>
 				<div className='w-full pt-10 pb-5 flex justify-end px-10 gap-1'>
 					{Array.from({ length: 5 }).map((_, i) =>
@@ -116,7 +117,7 @@ export default function Testimonial({
 						)
 					)}
 				</div>
-				<article className='px-10 mb-10 grow prose max-w-none line-clamp-5 md:line-clamp-3'>
+				<article className='px-10 mb-10 text-left grow prose max-w-none line-clamp-5 md:line-clamp-3'>
 					<PortableText value={testimonial.content} />
 				</article>
 
