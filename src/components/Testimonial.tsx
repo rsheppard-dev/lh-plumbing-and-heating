@@ -93,7 +93,7 @@ export default function Testimonial({
 				aria-hidden={index !== slideIndex}
 				disabled={index !== slideIndex}
 				onClick={isOpen ? closeModal : openModal}
-				className='disabled:opacity-70 flex w-full md:w-11/12 h-full enabled:hover:shadow-lg transition-all flex-col bg-white shadow-md grow-0 shrink-0 min-w-full prose font-sourceSans text-zinc-600'
+				className='disabled:opacity-70 flex w-full md:w-11/12 h-full enabled:hover:shadow-lg enabled:hover:scale-[102%] transition-all flex-col bg-white shadow-md grow-0 shrink-0 min-w-full prose font-sourceSans text-zinc-600'
 			>
 				<div className='w-full pt-10 pb-5 flex justify-end px-10 gap-1'>
 					{Array.from({ length: 5 }).map((_, i) =>

@@ -20,6 +20,7 @@ import ServicesSection from '@/components/ServicesSection';
 import IService from '@/interfaces/IService';
 import ITestimonial from '@/interfaces/ITestimonial';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import ContactSection from '@/components/ContactSection';
 
 export default async function Home() {
 	const homePromise = sanityFetch<IHomePage>({ query: homeQuery });
@@ -64,6 +65,7 @@ export default async function Home() {
 			<Certifications data={certificationData} />
 			<TestimonialsSection data={testimonialsData} />
 			<ServicesSection data={servicesData} />
+			<ContactSection />
 		</>
 	);
 }

@@ -54,6 +54,10 @@ export default function SectionHeader({
 					</Wrapper>
 				</div>
 			</div>
+
+			<Wrapper>
+				<hr className='mb-10 bg-zinc-300 border-0 h-px' />
+			</Wrapper>
 		</>
 	);
 }

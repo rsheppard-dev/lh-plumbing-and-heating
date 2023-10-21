@@ -31,7 +31,7 @@ export default function TestimonialsSection({ data }: Props) {
 	}
 
 	return (
-		<Wrapper className='relative mb-10 w-full overflow-x-clip'>
+		<Wrapper className='relative mb-10 w-full'>
 			<div
 				style={{
 					transform: `translateX(calc(-${slideIndex * 102}%))`,

@@ -4,7 +4,6 @@ export function useAnimationData(jsonUrl: string) {
 	const [animationData, setAnimationData] = useState(null);
 
 	useEffect(() => {
-		// Use the fetch API to retrieve the JSON data
 		fetch(jsonUrl)
 			.then(response => {
 				if (!response.ok) {
@@ -13,7 +12,6 @@ export function useAnimationData(jsonUrl: string) {
 				return response.json();
 			})
 			.then(data => {
-				// Store the JSON data in the state variable
 				setAnimationData(data);
 			})
 			.catch(error => {
