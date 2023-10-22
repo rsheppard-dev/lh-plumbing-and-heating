@@ -158,7 +158,7 @@ export default function ContactSection({ type = 'section', data }: Props) {
 				</div>
 			</Wrapper>
 
-			<Wrapper>
+			<Wrapper className='h-[400px] w-full'>
 				<Map location={data.location} />
 			</Wrapper>
 		</section>
