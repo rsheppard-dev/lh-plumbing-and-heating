@@ -69,5 +69,6 @@ export const settingsQuery = groq`*[_id == "settings"][0]{
             city,
             county,
             postCode,
-            location
+            location,
+            times
         }`;

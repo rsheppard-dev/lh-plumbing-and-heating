@@ -12,12 +12,27 @@ export default interface ISettings {
 	city: string;
 	county: string;
 	postCode: string;
-	location: {
-		_type: 'geopoint';
-		lng: number;
-		lat: number;
-	};
+	location: ILocation;
+	times: IAvailibleTimes[];
 	metaTitle: string;
 	metaDescription: string;
 	ogImage: IImage;
+}
+
+export interface ILocation {
+	_type: 'geopoint';
+	lng: number;
+	lat: number;
+}
+
+export interface IAvailibleTimes {
+	availableTimes: {
+		from: string;
+		to: string;
+		_key: string;
+		_type: 'availabilityDuration';
+	}[];
+	day: string;
+	_key: string;
+	_type: 'availabilityDay';
 }

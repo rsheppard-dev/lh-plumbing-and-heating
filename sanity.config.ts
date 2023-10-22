@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa';
 import types from '@/sanity/schemas';
 import { media } from 'sanity-plugin-media';
+import { availability } from 'sanity-plugin-availability';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET as string;
@@ -65,7 +66,7 @@ const config = defineConfig({
 
 						S.divider(),
 
-						singletonListItem(S, 'settings', 'Settings').icon(FaCog),
+						singletonListItem(S, 'settings', 'Company Details').icon(FaCog),
 					]),
 		}),
 		googleMapsInput({
@@ -78,6 +79,7 @@ const config = defineConfig({
 		}),
 		media(),
 		visionTool(),
+		availability(),
 	],
 	schema: {
 		types,

@@ -3,7 +3,7 @@ import { defineField, defineType } from 'sanity';
 const settings = defineType({
 	name: 'settings',
 	type: 'document',
-	title: 'Settings',
+	title: 'Company Details',
 	groups: [
 		{
 			title: 'Company Details',
@@ -87,6 +87,12 @@ const settings = defineType({
 			type: 'geopoint',
 			group: 'companyDetails',
 			validation: Rule => Rule.required(),
+		}),
+		defineField({
+			title: 'Opening Times',
+			name: 'times',
+			type: 'availability',
+			group: 'companyDetails',
 		}),
 		defineField({
 			title: 'Meta Title',

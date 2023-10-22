@@ -6,6 +6,7 @@ import {
 	certificationQuery,
 	homeQuery,
 	serviceQuery,
+	settingsQuery,
 	testimonialQuery,
 } from '@/sanity/lib/queries';
 import { draftMode } from 'next/headers';
@@ -21,6 +22,7 @@ import IService from '@/interfaces/IService';
 import ITestimonial from '@/interfaces/ITestimonial';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
+import ISettings from '@/interfaces/ISettings';
 
 export default async function Home() {
 	const homePromise = sanityFetch<IHomePage>({ query: homeQuery });
@@ -34,6 +36,9 @@ export default async function Home() {
 	const testimonialsPromise = sanityFetch<ITestimonial[]>({
 		query: testimonialQuery,
 	});
+	const settingsPromise = sanityFetch<ISettings>({
+		query: settingsQuery,
+	});
 
 	const [
 		homeData,
@@ -41,12 +46,14 @@ export default async function Home() {
 		certificationData,
 		servicesData,
 		testimonialsData,
+		settingsData,
 	] = await Promise.all([
 		homePromise,
 		aboutPromise,
 		certificationPromise,
 		servicesPromise,
 		testimonialsPromise,
+		settingsPromise,
 	]);
 	const isDraftMode = draftMode().isEnabled;
 
@@ -65,7 +72,7 @@ export default async function Home() {
 			<Certifications data={certificationData} />
 			<TestimonialsSection data={testimonialsData} />
 			<ServicesSection data={servicesData} />
-			<ContactSection />
+			<ContactSection data={settingsData} />
 		</>
 	);
 }

@@ -9,16 +9,21 @@ import { RefObject, useRef } from 'react';
 import phoneData from '../assets/phone-icon.json';
 import emailData from '../assets/email-icon.json';
 import locData from '../assets/location-icon.json';
+import ISettings from '@/interfaces/ISettings';
+import useIsOpen from '@/hooks/useIsOpen';
+import Map from './Map';
 
 type Props = {
 	type?: 'page' | 'section';
-	data: any;
+	data: ISettings;
 };
 
-export default function ContactSection({ type = 'section', data }): Props {
+export default function ContactSection({ type = 'section', data }: Props) {
 	const phoneRef = useRef<LottieRefCurrentProps>(null);
 	const emailRef = useRef<LottieRefCurrentProps>(null);
 	const locRef = useRef<LottieRefCurrentProps>(null);
+
+	const { isOpen } = useIsOpen(data.times);
 
 	const [phoneAnimationData] = useAnimationData('../assets/phone-icon.json');
 	const [emailAnimationData] = useAnimationData('../assets/email-icon.json');
@@ -33,6 +38,7 @@ export default function ContactSection({ type = 'section', data }): Props {
 	function stopAnimation(currentRef: RefObject<LottieRefCurrentProps>) {
 		currentRef.current && currentRef.current.stop();
 	}
+
 	return (
 		<section className={`${type === 'page' ? 'pt-32 mb-10' : 'mb-10'}`}>
 			<SectionHeader
@@ -40,7 +46,7 @@ export default function ContactSection({ type = 'section', data }): Props {
 				heading='Get in Touch'
 			/>
 
-			<Wrapper className='grid gord-cols-1 md:grid-cols-2 gap-10 md:gap-5'>
+			<Wrapper className='grid gord-cols-1 md:grid-cols-2 gap-10 md:gap-5 mb-10'>
 				<ContactForm />
 
 				<div className='md:order-first flex flex-col min-h-full'>
@@ -56,44 +62,41 @@ export default function ContactSection({ type = 'section', data }): Props {
 
 						<p className='font-sourceSans text-zinc-700 mb-5'>
 							We are currently{' '}
-							<span className='font-semibold text-green-600'>open</span>.
+							<span
+								className={`font-semibold ${
+									isOpen ? 'text-green-600' : 'text-red-600'
+								}`}
+							>
+								{isOpen ? 'open' : 'closed'}
+							</span>
+							.
 						</p>
 
 						<div className='prose sm:w-3/4'>
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Monday:</span>
-								<span className='text-zinc-700'>8:30 - 17:00</span>
-							</div>
-
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Tuesday:</span>
-								<span className='text-zinc-700'>8:30 - 17:00</span>
-							</div>
-
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Wednesday:</span>
-								<span className='text-zinc-700'>8:30 - 17:00</span>
-							</div>
-
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Thursday:</span>
-								<span className='text-zinc-700'>8:30 - 17:00</span>
-							</div>
-
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Friday:</span>
-								<span className='text-zinc-700'>8:30 - 17:00</span>
-							</div>
-
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Saturday:</span>
-								<span className='text-zinc-700'>Closed</span>
-							</div>
-
-							<div className='flex justify-between font-sourceSans'>
-								<span className='font-bold text-zinc-900'>Sunday:</span>
-								<span className='text-zinc-700'>Closed</span>
-							</div>
+							{data.times.map(time => (
+								<div
+									key={time._key}
+									className='flex justify-between font-sourceSans'
+								>
+									<span className='font-bold text-zinc-900'>{time.day}:</span>
+									<div className='flex flex-col prose'>
+										{time.availableTimes.length > 0 ? (
+											time.availableTimes.map(openingTimes => (
+												<span
+													key={openingTimes._key}
+													className='font-sourceSans text-zinc-700'
+												>
+													{openingTimes.from} - {openingTimes.to}
+												</span>
+											))
+										) : (
+											<span className='font-sourceSans text-zinc-700'>
+												Closed
+											</span>
+										)}
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
 
@@ -101,7 +104,7 @@ export default function ContactSection({ type = 'section', data }): Props {
 						<a
 							onMouseEnter={() => playAnimation(phoneRef)}
 							onMouseLeave={() => stopAnimation(phoneRef)}
-							href='tel:02088642311'
+							href={`tel:${data.phone.replaceAll(' ', '')}`}
 							className='flex items-center gap-5'
 						>
 							<Lottie
@@ -111,14 +114,14 @@ export default function ContactSection({ type = 'section', data }): Props {
 								className='w-fit block h-12'
 							/>
 							<span className='font-sourceSans font-bold text-zinc-900'>
-								020 8864 2311
+								{data.phone}
 							</span>
 						</a>
 
 						<a
 							onMouseEnter={() => playAnimation(emailRef)}
 							onMouseLeave={() => stopAnimation(emailRef)}
-							href='mailto:lh@lhpluming-harrow.co.uk'
+							href={`mailto:${data.email}`}
 							className='flex items-center gap-5'
 						>
 							<Lottie
@@ -128,14 +131,15 @@ export default function ContactSection({ type = 'section', data }): Props {
 								className='w-fit block h-12'
 							/>
 							<span className='font-sourceSans font-bold text-zinc-900'>
-								lh@lhpluming-harrow.co.uk
+								{data.email}
 							</span>
 						</a>
 
 						<a
 							onMouseEnter={() => playAnimation(locRef)}
 							onMouseLeave={() => stopAnimation(locRef)}
-							href='#'
+							href={`https://maps.google.com/?q=${data.location.lat},${data.location.lng}&ll=${data.location.lat},${data.location.lng}&z=20`}
+							target='_blank'
 							className='flex items-center gap-5'
 						>
 							<Lottie
@@ -145,11 +149,17 @@ export default function ContactSection({ type = 'section', data }): Props {
 								className='w-fit block h-12'
 							/>
 							<span className='font-sourceSans font-bold text-zinc-900'>
-								130 Vaughan Road, Harrow, HA1 4ED
+								{data.address1}, {data.address2 ? data.address2 + ',' : ''}{' '}
+								{data.city}, {data.county ? data.county + ',' : ''}{' '}
+								{data.postCode}
 							</span>
 						</a>
 					</div>
 				</div>
+			</Wrapper>
+
+			<Wrapper>
+				<Map location={data.location} />
 			</Wrapper>
 		</section>
 	);
