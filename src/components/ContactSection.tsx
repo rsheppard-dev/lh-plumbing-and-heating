@@ -113,7 +113,7 @@ export default function ContactSection({ type = 'section', data }: Props) {
 								autoplay={false}
 								className='w-fit block h-12'
 							/>
-							<span className='font-sourceSans font-bold text-zinc-900'>
+							<span className='grow font-sourceSans font-bold text-zinc-900'>
 								{data.phone}
 							</span>
 						</a>
@@ -130,7 +130,7 @@ export default function ContactSection({ type = 'section', data }: Props) {
 								autoplay={false}
 								className='w-fit block h-12'
 							/>
-							<span className='font-sourceSans font-bold text-zinc-900'>
+							<span className='grow font-sourceSans font-bold text-zinc-900'>
 								{data.email}
 							</span>
 						</a>
