@@ -15,6 +15,20 @@ const config: Config = {
 				montserrat: ['var(--font-montserrat)'],
 				sourceSans: ['var(--font-source-sans)'],
 			},
+			keyframes: {
+				'animate-enter': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				'animate-leave': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' },
+				},
+			},
+			animation: {
+				'animate-enter': 'animate-enter 0.5s ease-in-out',
+				'animate-leave': 'animate-leave 0.5s ease-in-out',
+			},
 		},
 	},
 	plugins: [

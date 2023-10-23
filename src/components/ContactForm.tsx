@@ -1,14 +1,28 @@
 'use client';
 
-import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { contactSchema, type ContactInput } from '@/lib/validations';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
+import { FaThumbsUp } from 'react-icons/fa';
 
 export default function ContactForm() {
 	function messageSent() {
-		toast.success('Message sent successfully!');
+		toast.custom(t => (
+			<div
+				className={`${t.visible ? 'animate-enter' : 'animate-leave'}
+			 	max-w-fit bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+			>
+				<div className='p-4 flex items-center gap-4'>
+					<span>
+						<FaThumbsUp aria-hidden className='fill-brand-blue' />
+					</span>
+					<span className='font-sourceSans font-bold text-zinc-900'>
+						Message sent successfully!
+					</span>
+				</div>
+			</div>
+		));
 	}
 
 	async function handleSubmit(
@@ -143,18 +157,7 @@ export default function ContactForm() {
 					>
 						Send Message
 					</button>
-					<ToastContainer
-						position='bottom-center'
-						autoClose={5000}
-						hideProgressBar={false}
-						newestOnTop={false}
-						closeOnClick
-						rtl={false}
-						pauseOnFocusLoss
-						draggable
-						pauseOnHover
-						theme='light'
-					/>
+					<Toaster />
 				</Form>
 			)}
 		</Formik>
