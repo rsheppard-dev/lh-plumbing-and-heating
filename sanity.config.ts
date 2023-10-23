@@ -10,6 +10,7 @@ import {
 	FaMedal,
 	FaTools,
 } from 'react-icons/fa';
+import { FaMessage } from 'react-icons/fa6';
 import types from '@/sanity/schemas';
 import { media } from 'sanity-plugin-media';
 import { availability } from 'sanity-plugin-availability';
@@ -26,7 +27,13 @@ const singletonActions = new Set([
 	'preview',
 ]);
 
-const singletonTypes = new Set(['homePage', 'about', 'service', 'settings']);
+const singletonTypes = new Set([
+	'homePage',
+	'about',
+	'service',
+	'settings',
+	'contact',
+]);
 
 const singletonListItem = (
 	S: StructureBuilder,
@@ -54,6 +61,7 @@ const config = defineConfig({
 						singletonListItem(S, 'homePage', 'Home Section').icon(FaHome),
 						singletonListItem(S, 'about', 'About Section').icon(FaBuilding),
 						singletonListItem(S, 'service', 'Service Section').icon(FaTools),
+						singletonListItem(S, 'contact', 'Contact Section').icon(FaMessage),
 
 						S.divider(),
 

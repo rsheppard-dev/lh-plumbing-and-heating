@@ -40,6 +40,15 @@ export const serviceQuery = groq`*[_type == "service"][0]{
             }
         }`;
 
+export const contactQuery = groq`*[_type == "contact"][0]{
+            subheading,
+            heading,
+            content,
+            "phoneIcon": phoneIcon.asset->url,
+            "emailIcon": emailIcon.asset->url,
+            "locationIcon": locationIcon.asset->url,
+        }`;
+
 export const certificationQuery = groq`*[_type == "certification"]{
             _id,
             title,

@@ -2,10 +2,20 @@ import { IAvailibleTimes } from '@/interfaces/ISettings';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function useIsOpen(times: IAvailibleTimes[]) {
+	function convertTo24HourFormat(timeString: string) {
+		let time = parseInt(timeString, 10);
+
+		if (timeString.includes('PM') && time < 1200) {
+			time += 1200;
+		}
+
+		return time.toString().padStart(4, '0'); // ensure the result is a 4-digit string.
+	}
+
 	const isCurrentlyOpen = useCallback(() => {
 		const now = new Date();
 		const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
-		const currentTime = now.getHours() * 100 + now.getMinutes(); // Convert to 24-hour format
+		const currentTime = now.getHours() * 100 + now.getMinutes(); // convert to 24-hour format
 
 		const todayOpeningTimes = times.find(time => time.day === currentDay);
 
@@ -14,7 +24,10 @@ export default function useIsOpen(times: IAvailibleTimes[]) {
 				const from = openingTime.from.replace(':', '');
 				const to = openingTime.to.replace(':', '');
 
-				if (currentTime >= parseInt(from) && currentTime <= parseInt(to)) {
+				if (
+					currentTime >= parseInt(convertTo24HourFormat(from)) &&
+					currentTime <= parseInt(convertTo24HourFormat(to))
+				) {
 					return true;
 				}
 			}

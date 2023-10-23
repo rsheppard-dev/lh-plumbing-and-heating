@@ -6,30 +6,32 @@ import Wrapper from './Wrapper';
 import { useAnimationData } from '@/hooks/useAnimationData';
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 import { RefObject, useRef } from 'react';
-import phoneData from '../assets/phone-icon.json';
-import emailData from '../assets/email-icon.json';
-import locData from '../assets/location-icon.json';
 import ISettings from '@/interfaces/ISettings';
 import useIsOpen from '@/hooks/useIsOpen';
 import Map from './Map';
+import IContact from '@/interfaces/IContact';
+import { PortableText } from '@portabletext/react';
 
 type Props = {
 	type?: 'page' | 'section';
-	data: ISettings;
+	settings: ISettings;
+	contact: IContact;
 };
 
-export default function ContactSection({ type = 'section', data }: Props) {
+export default function ContactSection({
+	type = 'section',
+	settings,
+	contact,
+}: Props) {
 	const phoneRef = useRef<LottieRefCurrentProps>(null);
 	const emailRef = useRef<LottieRefCurrentProps>(null);
 	const locRef = useRef<LottieRefCurrentProps>(null);
 
-	const { isOpen } = useIsOpen(data.times);
+	const { isOpen } = useIsOpen(settings.times);
 
-	// const [phoneAnimationData] = useAnimationData('../assets/phone-icon.json');
-	// const [emailAnimationData] = useAnimationData('../assets/email-icon.json');
-	// const [locationAnimationData] = useAnimationData(
-	// 	'../assets/location-icon.json'
-	// );
+	const [phoneAnimationData] = useAnimationData(contact.phoneIcon);
+	const [emailAnimationData] = useAnimationData(contact.emailIcon);
+	const [locationAnimationData] = useAnimationData(contact.locationIcon);
 
 	function playAnimation(currentRef: RefObject<LottieRefCurrentProps>) {
 		currentRef.current && currentRef.current.play();
@@ -42,18 +44,17 @@ export default function ContactSection({ type = 'section', data }: Props) {
 	return (
 		<section className={`${type === 'page' ? 'pt-32 mb-10' : 'mb-10'}`}>
 			<SectionHeader
-				subheading='Contact Plumbers in Harrow'
-				heading='Get in Touch'
+				subheading={contact.subheading}
+				heading={contact.heading}
 			/>
 
 			<Wrapper className='grid gord-cols-1 md:grid-cols-2 gap-10 md:gap-5 mb-10'>
 				<ContactForm />
 
 				<div className='md:order-first flex flex-col min-h-full'>
-					<p className='font-sourceSans text-zinc-700 mb-10'>
-						Please contact us in whatever way you wish and we will do our very
-						best to help you in any way we can!
-					</p>
+					<div className='font-sourceSans text-zinc-700 mb-10'>
+						<PortableText value={contact.content} />
+					</div>
 
 					<div className='grow mb-10'>
 						<h3 className='font-montserrat font-bold text-zinc-900 mb-5'>
@@ -73,7 +74,7 @@ export default function ContactSection({ type = 'section', data }: Props) {
 						</p>
 
 						<div className='prose sm:w-3/4'>
-							{data.times.map(time => (
+							{settings.times.map(time => (
 								<div
 									key={time._key}
 									className='flex justify-between font-sourceSans'
@@ -104,60 +105,61 @@ export default function ContactSection({ type = 'section', data }: Props) {
 						<a
 							onMouseEnter={() => playAnimation(phoneRef)}
 							onMouseLeave={() => stopAnimation(phoneRef)}
-							href={`tel:${data.phone.replaceAll(' ', '')}`}
+							href={`tel:${settings.phone.replaceAll(' ', '')}`}
 							className='flex items-center gap-5'
 						>
 							<span className='w-12 h-12'>
 								<Lottie
 									lottieRef={phoneRef}
-									animationData={phoneData}
+									animationData={phoneAnimationData}
 									autoplay={false}
 									className='w-fit block h-12'
 								/>
 							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
-								{data.phone}
+								{settings.phone}
 							</span>
 						</a>
 
 						<a
 							onMouseEnter={() => playAnimation(emailRef)}
 							onMouseLeave={() => stopAnimation(emailRef)}
-							href={`mailto:${data.email}`}
+							href={`mailto:${settings.email}`}
 							className='flex items-center gap-5'
 						>
 							<span className='w-12 h-12'>
 								<Lottie
 									lottieRef={emailRef}
-									animationData={emailData}
+									animationData={emailAnimationData}
 									autoplay={false}
 									className='w-fit block h-12'
 								/>
 							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
-								{data.email}
+								{settings.email}
 							</span>
 						</a>
 
 						<a
 							onMouseEnter={() => playAnimation(locRef)}
 							onMouseLeave={() => stopAnimation(locRef)}
-							href={`https://maps.google.com/?q=${data.location.lat},${data.location.lng}&ll=${data.location.lat},${data.location.lng}&z=20`}
+							href={`https://maps.google.com/?q=${settings.location.lat},${settings.location.lng}&ll=${settings.location.lat},${settings.location.lng}&z=20`}
 							target='_blank'
 							className='flex items-center gap-5'
 						>
 							<span className='w-12 h-12'>
 								<Lottie
 									lottieRef={locRef}
-									animationData={locData}
+									animationData={locationAnimationData}
 									autoplay={false}
 									className='block w-fit h-12'
 								/>
 							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
-								{data.address1}, {data.address2 ? data.address2 + ',' : ''}{' '}
-								{data.city}, {data.county ? data.county + ',' : ''}{' '}
-								{data.postCode}
+								{settings.address1},{' '}
+								{settings.address2 ? settings.address2 + ',' : ''}{' '}
+								{settings.city}, {settings.county ? settings.county + ',' : ''}{' '}
+								{settings.postCode}
 							</span>
 						</a>
 					</div>
@@ -165,7 +167,7 @@ export default function ContactSection({ type = 'section', data }: Props) {
 			</Wrapper>
 
 			<Wrapper className='h-[400px] w-full'>
-				<Map location={data.location} />
+				<Map location={settings.location} />
 			</Wrapper>
 		</section>
 	);
