@@ -107,12 +107,14 @@ export default function ContactSection({ type = 'section', data }: Props) {
 							href={`tel:${data.phone.replaceAll(' ', '')}`}
 							className='flex items-center gap-5'
 						>
-							<Lottie
-								lottieRef={phoneRef}
-								animationData={phoneData}
-								autoplay={false}
-								className='w-fit block h-12'
-							/>
+							<span className='w-12 h-12'>
+								<Lottie
+									lottieRef={phoneRef}
+									animationData={phoneData}
+									autoplay={false}
+									className='w-fit block h-12'
+								/>
+							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
 								{data.phone}
 							</span>
@@ -124,12 +126,14 @@ export default function ContactSection({ type = 'section', data }: Props) {
 							href={`mailto:${data.email}`}
 							className='flex items-center gap-5'
 						>
-							<Lottie
-								lottieRef={emailRef}
-								animationData={emailData}
-								autoplay={false}
-								className='w-fit block h-12'
-							/>
+							<span className='w-12 h-12'>
+								<Lottie
+									lottieRef={emailRef}
+									animationData={emailData}
+									autoplay={false}
+									className='w-fit block h-12'
+								/>
+							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
 								{data.email}
 							</span>
@@ -142,12 +146,14 @@ export default function ContactSection({ type = 'section', data }: Props) {
 							target='_blank'
 							className='flex items-center gap-5'
 						>
-							<Lottie
-								lottieRef={locRef}
-								animationData={locData}
-								autoplay={false}
-								className='block w-fit h-12'
-							/>
+							<span className='w-12 h-12'>
+								<Lottie
+									lottieRef={locRef}
+									animationData={locData}
+									autoplay={false}
+									className='block w-fit h-12'
+								/>
+							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
 								{data.address1}, {data.address2 ? data.address2 + ',' : ''}{' '}
 								{data.city}, {data.county ? data.county + ',' : ''}{' '}
