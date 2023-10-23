@@ -1,6 +1,6 @@
 export default function ContactForm() {
 	return (
-		<form className='px-8 py-4 bg-brand-blue space-y-4'>
+		<form className='px-6 py-3 sm:px-8 sm:py-4 bg-brand-blue space-y-4'>
 			<div className='flex flex-col gap-2'>
 				<label
 					className='font-sourceSans font-bold text-sm text-white'

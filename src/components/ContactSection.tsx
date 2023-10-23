@@ -25,11 +25,11 @@ export default function ContactSection({ type = 'section', data }: Props) {
 
 	const { isOpen } = useIsOpen(data.times);
 
-	const [phoneAnimationData] = useAnimationData('../assets/phone-icon.json');
-	const [emailAnimationData] = useAnimationData('../assets/email-icon.json');
-	const [locationAnimationData] = useAnimationData(
-		'../assets/location-icon.json'
-	);
+	// const [phoneAnimationData] = useAnimationData('../assets/phone-icon.json');
+	// const [emailAnimationData] = useAnimationData('../assets/email-icon.json');
+	// const [locationAnimationData] = useAnimationData(
+	// 	'../assets/location-icon.json'
+	// );
 
 	function playAnimation(currentRef: RefObject<LottieRefCurrentProps>) {
 		currentRef.current && currentRef.current.play();
@@ -142,12 +142,14 @@ export default function ContactSection({ type = 'section', data }: Props) {
 							target='_blank'
 							className='flex items-center gap-5'
 						>
-							<Lottie
-								lottieRef={locRef}
-								animationData={locData}
-								autoplay={false}
-								className='w-fit block h-12'
-							/>
+							<span className='w-12 h-12'>
+								<Lottie
+									lottieRef={locRef}
+									animationData={locData}
+									autoplay={false}
+									className='block w-12 h-12'
+								/>
+							</span>
 							<span className='font-sourceSans font-bold text-zinc-900'>
 								{data.address1}, {data.address2 ? data.address2 + ',' : ''}{' '}
 								{data.city}, {data.county ? data.county + ',' : ''}{' '}
