@@ -6,19 +6,22 @@ import { contactSchema, type ContactInput } from '@/lib/validations';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaThumbsUp } from 'react-icons/fa';
 
-export default function ContactForm() {
+type Props = {
+	successMessage: string;
+};
+export default function ContactForm({ successMessage }: Props) {
 	function messageSent() {
 		toast.custom(t => (
 			<div
 				className={`${t.visible ? 'animate-enter' : 'animate-leave'}
 			 	max-w-fit bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
 			>
-				<div className='p-4 flex items-center gap-4'>
+				<div className='p-4 flex gap-4'>
 					<span>
 						<FaThumbsUp aria-hidden className='fill-brand-blue' />
 					</span>
 					<span className='font-sourceSans font-bold text-zinc-900'>
-						Message sent successfully!
+						{successMessage}
 					</span>
 				</div>
 			</div>

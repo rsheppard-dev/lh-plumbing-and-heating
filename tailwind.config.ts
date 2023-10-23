@@ -17,7 +17,7 @@ const config: Config = {
 			},
 			keyframes: {
 				'animate-enter': {
-					'0%': { opacity: '0' },
+					'0%': { opacity: '0', transform: '' },
 					'100%': { opacity: '1' },
 				},
 				'animate-leave': {

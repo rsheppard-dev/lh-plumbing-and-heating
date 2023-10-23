@@ -49,7 +49,7 @@ export default function ContactSection({
 			/>
 
 			<Wrapper className='grid gord-cols-1 md:grid-cols-2 gap-10 md:gap-5 mb-10'>
-				<ContactForm />
+				<ContactForm successMessage={contact.successMessage} />
 
 				<div className='md:order-first flex flex-col min-h-full'>
 					<div className='font-sourceSans text-zinc-700 mb-10'>

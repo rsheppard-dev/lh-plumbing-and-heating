@@ -10,4 +10,5 @@ export default interface IContact {
 	phoneIcon: string;
 	emailIcon: string;
 	locationIcon: string;
+	successMessage: string;
 }

@@ -1,6 +1,4 @@
 import { defineField, defineType } from 'sanity';
-import { FaHighlighter } from 'react-icons/fa';
-import HighlightedTextUI from '@/components/HighlightedTextUI';
 
 const contact = defineType({
 	name: 'contact',
@@ -63,6 +61,13 @@ const contact = defineType({
 			options: {
 				accept: '.json',
 			},
+			validation: Rule => Rule.required(),
+		}),
+		defineField({
+			title: 'Success Message',
+			description: 'Message to display when visitor submits contact form.',
+			name: 'successMessage',
+			type: 'string',
 			validation: Rule => Rule.required(),
 		}),
 	],

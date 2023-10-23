@@ -47,6 +47,7 @@ export const contactQuery = groq`*[_type == "contact"][0]{
             "phoneIcon": phoneIcon.asset->url,
             "emailIcon": emailIcon.asset->url,
             "locationIcon": locationIcon.asset->url,
+            successMessage
         }`;
 
 export const certificationQuery = groq`*[_type == "certification"]{
