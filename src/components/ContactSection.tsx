@@ -142,15 +142,13 @@ export default function ContactSection({ type = 'section', data }: Props) {
 							target='_blank'
 							className='flex items-center gap-5'
 						>
-							<span className='w-12 h-12'>
-								<Lottie
-									lottieRef={locRef}
-									animationData={locData}
-									autoplay={false}
-									className='block w-12 h-12'
-								/>
-							</span>
-							<span className='font-sourceSans font-bold text-zinc-900'>
+							<Lottie
+								lottieRef={locRef}
+								animationData={locData}
+								autoplay={false}
+								className='block w-fit h-12'
+							/>
+							<span className='grow font-sourceSans font-bold text-zinc-900'>
 								{data.address1}, {data.address2 ? data.address2 + ',' : ''}{' '}
 								{data.city}, {data.county ? data.county + ',' : ''}{' '}
 								{data.postCode}
