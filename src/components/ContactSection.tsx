@@ -27,7 +27,7 @@ export default function ContactSection({
 	const emailRef = useRef<LottieRefCurrentProps>(null);
 	const locRef = useRef<LottieRefCurrentProps>(null);
 
-	const { isOpen } = useIsOpen(settings.times);
+	const { isOpen, currentDay } = useIsOpen(settings.times);
 
 	const [phoneAnimationData] = useAnimationData(contact.phoneIcon);
 	const [emailAnimationData] = useAnimationData(contact.emailIcon);
@@ -85,13 +85,19 @@ export default function ContactSection({
 											time.availableTimes.map(openingTimes => (
 												<span
 													key={openingTimes._key}
-													className='font-sourceSans text-zinc-700'
+													className={`font-sourceSans text-zinc-700 ${
+														currentDay === time.day && 'font-bold'
+													}`}
 												>
 													{openingTimes.from} - {openingTimes.to}
 												</span>
 											))
 										) : (
-											<span className='font-sourceSans text-zinc-700'>
+											<span
+												className={`font-sourceSans text-zinc-700 ${
+													currentDay === time.day && 'font-bold'
+												}`}
+											>
 												Closed
 											</span>
 										)}
