@@ -74,8 +74,11 @@ export default function Footer({ settings }: Props) {
 						</a>
 					</div>
 
-					<div className='text-zinc-800 font-sourceSans text-xs md:order-first'>
-						© 2023 - LH Plumbing and Heating |{' '}
+					<div className='text-zinc-800 font-sourceSans text-xs md:order-first space-x-2'>
+						<span>
+							© {new Date().getFullYear()} - {settings.companyName}
+						</span>
+						<span>|</span>
 						<a href='https://www.roysheppard.digital' target='_blank'>
 							Website By Roy Sheppard Digital
 						</a>

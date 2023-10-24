@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
+'use server';
+
 import { render } from '@react-email/components';
 import { transporter, user } from '@/lib/nodemailer';
 import Email from '@/components/Email';
 import { ContactInput } from '@/lib/validations';
 
-export async function POST(req: NextRequest, res: NextResponse) {
-	const body = (await req.json()) as ContactInput;
-	const { firstName, lastName, phone, email, message } = body;
+export async function sendMessage(formData: ContactInput) {
+	const { firstName, lastName, phone, email, message } = formData;
 
 	const emailHtml = render(
 		<Email
@@ -31,6 +31,4 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	} catch (error) {
 		console.log('Failed to send email:', error);
 	}
-
-	return new Response('OK');
 }

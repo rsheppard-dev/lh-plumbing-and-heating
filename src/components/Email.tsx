@@ -27,9 +27,6 @@ export default function Email({
 							You got a message!
 						</Heading>
 						<Text className='text-[14px] leading-[24px] text-black'>
-							Hello,
-						</Text>
-						<Text className='text-[14px] leading-[24px] text-black'>
 							You got an email from{' '}
 							<strong>
 								{firstName} {lastName}

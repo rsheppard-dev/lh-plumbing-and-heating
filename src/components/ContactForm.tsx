@@ -5,6 +5,7 @@ import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { contactSchema, type ContactInput } from '@/lib/validations';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaThumbsUp } from 'react-icons/fa';
+import { sendMessage } from '@/lib/sendMessage';
 
 type Props = {
 	successMessage: string;
@@ -28,7 +29,7 @@ export default function ContactForm({ successMessage }: Props) {
 		));
 	}
 
-	async function handleSubmit(
+	function handleSubmit(
 		values: ContactInput,
 		{
 			setSubmitting,
@@ -39,13 +40,7 @@ export default function ContactForm({ successMessage }: Props) {
 		}
 	) {
 		try {
-			fetch('/api/contact', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(values),
-			});
+			sendMessage(values);
 
 			resetForm();
 
@@ -160,7 +155,7 @@ export default function ContactForm({ successMessage }: Props) {
 					>
 						Send Message
 					</button>
-					<Toaster />
+					<Toaster position='bottom-center' />
 				</Form>
 			)}
 		</Formik>
