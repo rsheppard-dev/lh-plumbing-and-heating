@@ -31,12 +31,12 @@ export default function ServicesCard({ title, icon, body }: Props) {
 			className='bg-white shadow-md h-full space-y-4 px-6 py-3'
 		>
 			<h3 className='font-bold font-montserrat text-zinc-900'>{title}</h3>
-			<div className='h-20'>
+			<div className='w-20 h-20'>
 				<Lottie
 					lottieRef={lottieRef}
 					animationData={animationData}
 					autoplay={false}
-					className='w-fit block'
+					className='h-20 w-20 block'
 				/>
 			</div>
 			<div className='font-sourceSans text-zinc-600 prose'>
