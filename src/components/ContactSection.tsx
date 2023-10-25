@@ -27,11 +27,14 @@ export default function ContactSection({
 	const emailRef = useRef<LottieRefCurrentProps>(null);
 	const locRef = useRef<LottieRefCurrentProps>(null);
 
-	const { isOpen, currentDay } = useIsOpen(settings.times);
+	const { isOpen } = useIsOpen(settings.times);
 
 	const [phoneAnimationData] = useAnimationData(contact.phoneIcon);
 	const [emailAnimationData] = useAnimationData(contact.emailIcon);
 	const [locationAnimationData] = useAnimationData(contact.locationIcon);
+
+	const now = new Date();
+	const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
 
 	function playAnimation(currentRef: RefObject<LottieRefCurrentProps>) {
 		currentRef.current && currentRef.current.play();

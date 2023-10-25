@@ -5,7 +5,6 @@ import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { contactSchema, type ContactInput } from '@/lib/validations';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaThumbsUp } from 'react-icons/fa';
-import { sendMessage } from '@/lib/sendMessage';
 
 type Props = {
 	successMessage: string;
@@ -40,7 +39,13 @@ export default function ContactForm({ successMessage }: Props) {
 		}
 	) {
 		try {
-			sendMessage(values);
+			fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(values),
+			});
 
 			resetForm();
 

@@ -1,10 +1,7 @@
 import { IAvailibleTimes } from '@/interfaces/ISettings';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function useIsOpen(times: IAvailibleTimes[]) {
-	const now = useMemo(() => new Date(), []);
-	const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
-
 	function convertTo24HourFormat(timeString: string) {
 		let time = parseInt(timeString, 10);
 
@@ -16,6 +13,8 @@ export default function useIsOpen(times: IAvailibleTimes[]) {
 	}
 
 	const isCurrentlyOpen = useCallback(() => {
+		const now = new Date();
+		const currentDay = now.toLocaleDateString('en-GB', { weekday: 'long' });
 		const currentTime = now.getHours() * 100 + now.getMinutes(); // convert to 24-hour format
 
 		const todayOpeningTimes = times.find(time => time.day === currentDay);
@@ -35,7 +34,7 @@ export default function useIsOpen(times: IAvailibleTimes[]) {
 		}
 
 		return false;
-	}, [currentDay, now, times]);
+	}, [times]);
 
 	const [isOpen, setIsOpen] = useState(isCurrentlyOpen());
 
@@ -49,6 +48,5 @@ export default function useIsOpen(times: IAvailibleTimes[]) {
 
 	return {
 		isOpen,
-		currentDay,
 	};
 }
