@@ -17,6 +17,12 @@ export default interface ISettings {
 	metaTitle: string;
 	metaDescription: string;
 	ogImage: IImage;
+	favicon: string;
+	favicon16: string;
+	favicon32: string;
+	favicon192: string;
+	favicon512: string;
+	appleTouchIcon: string;
 }
 
 export interface ILocation {

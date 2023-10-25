@@ -1,4 +1,5 @@
 import { PortableTextBlock } from 'sanity';
+import IImage from './IImage';
 
 export default interface IService {
 	_type: 'document';
@@ -11,4 +12,7 @@ export default interface IService {
 		icon: string;
 		body: PortableTextBlock[];
 	}[];
+	metaTitle: string;
+	metaDescription: string;
+	ogImage: IImage;
 }

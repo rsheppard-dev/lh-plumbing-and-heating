@@ -1,4 +1,5 @@
 import { PortableTextBlock } from 'sanity';
+import IImage from './IImage';
 
 export default interface IContact {
 	_type: 'document';
@@ -11,4 +12,7 @@ export default interface IContact {
 	emailIcon: string;
 	locationIcon: string;
 	successMessage: string;
+	metaTitle: string;
+	metaDescription: string;
+	ogImage: IImage;
 }

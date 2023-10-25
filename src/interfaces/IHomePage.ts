@@ -12,4 +12,7 @@ export default interface IHomePage {
 	autoSlide: boolean;
 	timer: number;
 	sliderImages: IImage[];
+	metaTitle: string;
+	metaDescription: string;
+	ogImage: IImage;
 }

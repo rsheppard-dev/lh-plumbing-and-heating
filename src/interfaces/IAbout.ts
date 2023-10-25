@@ -11,4 +11,7 @@ export default interface IAbout {
 	buttonText: string;
 	buttonLink: string;
 	image: IImage;
+	metaTitle: string;
+	metaDescription: string;
+	ogImage: IImage;
 }

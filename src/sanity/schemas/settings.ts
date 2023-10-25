@@ -20,6 +20,10 @@ const settings = defineType({
 			title: 'Address',
 			name: 'address',
 		},
+		{
+			title: 'Favicons',
+			name: 'favicons',
+		},
 	],
 	fields: [
 		defineField({
@@ -122,6 +126,72 @@ const settings = defineType({
 					title: 'Alternative Text',
 				}),
 			],
+		}),
+		defineField({
+			title: 'Favicon',
+			description: 'ICO format.',
+			name: 'favicon',
+			type: 'file',
+			options: {
+				accept: '.ico',
+			},
+			group: 'seo',
+			fieldset: 'favicons',
+		}),
+		defineField({
+			title: 'Favicon 16x16',
+			description: '16x16 PNG format',
+			name: 'favicon16',
+			type: 'file',
+			options: {
+				accept: '.png',
+			},
+			group: 'seo',
+			fieldset: 'favicons',
+		}),
+		defineField({
+			title: 'Favicon 32x32',
+			description: '32x32 PNG format',
+			name: 'favicon32',
+			type: 'file',
+			options: {
+				accept: '.png',
+			},
+			group: 'seo',
+			fieldset: 'favicons',
+		}),
+		defineField({
+			title: 'Android Chrome 192x192',
+			description: '192x192 PNG format',
+			name: 'favicon192',
+			type: 'file',
+			options: {
+				accept: '.png',
+			},
+			group: 'seo',
+			fieldset: 'favicons',
+		}),
+		defineField({
+			title: 'Android Chrome 512x512',
+			description: '512x512 PNG format',
+			name: 'favicon512',
+			type: 'file',
+			options: {
+				accept: '.png',
+			},
+			group: 'seo',
+			fieldset: 'favicons',
+		}),
+		defineField({
+			title: 'Apple Touch Icon',
+			description: 'PNG format',
+			name: 'appleTouchIcon',
+			type: 'file',
+			options: {
+				accept: '.png',
+			},
+			group: 'seo',
+			fieldset: 'favicons',
 		}),
 	],
 	preview: {

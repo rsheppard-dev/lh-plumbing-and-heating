@@ -1,4 +1,16 @@
 import HeroSection from '@/components/HeroSection';
+const DynamicContactSection = dynamic(
+	() => import('@/components/ContactSection'),
+	{
+		loading: () => <p>Loading...</p>,
+	}
+);
+const DynamicServicesSection = dynamic(
+	() => import('@/components/ServicesSection'),
+	{
+		loading: () => <p>Loading...</p>,
+	}
+);
 import AboutSection from '../../components/AboutSection';
 import { sanityFetch, token } from '@/sanity/lib/sanityFetch';
 import {
@@ -18,13 +30,28 @@ import IAbout from '@/interfaces/IAbout';
 import PreviewAboutSection from '@/components/PreviewAboutSection';
 import Certifications from '@/components/Certifications';
 import ICertification from '@/interfaces/ICertification';
-import ServicesSection from '@/components/ServicesSection';
 import IService from '@/interfaces/IService';
 import ITestimonial from '@/interfaces/ITestimonial';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import ContactSection from '@/components/ContactSection';
 import ISettings from '@/interfaces/ISettings';
 import IContact from '@/interfaces/IContact';
+import dynamic from 'next/dynamic';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const pagePromise = sanityFetch<IHomePage>({ query: homeQuery });
+	const sitePromise = sanityFetch<ISettings>({ query: settingsQuery });
+
+	const [page, site] = await Promise.all([pagePromise, sitePromise]);
+
+	return {
+		title: page?.metaTitle ?? site.metaTitle,
+		description: page?.metaDescription ?? site?.metaDescription,
+		openGraph: {
+			images: page?.ogImage?.url ?? site?.ogImage?.url,
+		},
+	};
+}
 
 export default async function Home() {
 	const homePromise = sanityFetch<IHomePage>({ query: homeQuery });
@@ -78,8 +105,8 @@ export default async function Home() {
 			<AboutSection data={aboutData} />
 			<Certifications data={certificationData} />
 			<TestimonialsSection data={testimonialsData} />
-			<ServicesSection data={servicesData} />
-			<ContactSection settings={settingsData} contact={contactData} />
+			<DynamicServicesSection data={servicesData} />
+			<DynamicContactSection settings={settingsData} contact={contactData} />
 		</>
 	);
 }

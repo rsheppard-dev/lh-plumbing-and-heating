@@ -5,6 +5,10 @@ const homePage = defineType({
 	name: 'homePage',
 	type: 'document',
 	title: 'Home Section',
+	groups: [
+		{ title: 'Content', name: 'content', default: true },
+		{ title: 'SEO', name: 'seo' },
+	],
 	fieldsets: [
 		{
 			title: 'Primary Button',
@@ -25,6 +29,7 @@ const homePage = defineType({
 			name: 'ctaHeading',
 			description: 'Call-to-action text that displays over image slider.',
 			type: 'string',
+			group: 'content',
 			validation: Rule => Rule.required(),
 		}),
 		defineField({
@@ -33,6 +38,7 @@ const homePage = defineType({
 			description: 'Primary button label.',
 			type: 'string',
 			fieldset: 'primaryButton',
+			group: 'content',
 			validation: Rule => Rule.required(),
 		}),
 		defineField({
@@ -41,6 +47,7 @@ const homePage = defineType({
 			description: 'Select the page you want the button to go to.',
 			type: 'string',
 			fieldset: 'primaryButton',
+			group: 'content',
 			options: {
 				list: pages.map(({ title, url }) => ({ title: title, value: url })),
 				layout: 'dropdown',
@@ -53,6 +60,7 @@ const homePage = defineType({
 			description: 'Secondary button label.',
 			type: 'string',
 			fieldset: 'secondaryButton',
+			group: 'content',
 		}),
 		defineField({
 			title: 'Secondary Button Navigation',
@@ -60,6 +68,7 @@ const homePage = defineType({
 			description: 'Select the page you want the button to go to.',
 			type: 'string',
 			fieldset: 'secondaryButton',
+			group: 'content',
 			options: {
 				list: pages.map(({ title, url }) => ({ title: title, value: url })),
 				layout: 'dropdown',
@@ -69,6 +78,7 @@ const homePage = defineType({
 			title: 'Slider Images',
 			name: 'sliderImages',
 			type: 'array',
+			group: 'content',
 			of: [
 				defineArrayMember({
 					type: 'image',
@@ -97,6 +107,7 @@ const homePage = defineType({
 			type: 'boolean',
 			initialValue: true,
 			fieldset: 'sliderFieldset',
+			group: 'content',
 		}),
 		defineField({
 			title: 'Timer',
@@ -107,6 +118,36 @@ const homePage = defineType({
 			hidden: ({ document }) => !document?.autoSlide,
 			validation: Rule => Rule.min(1).max(60),
 			fieldset: 'sliderFieldset',
+			group: 'content',
+		}),
+		defineField({
+			title: 'Meta Title',
+			name: 'metaTitle',
+			type: 'string',
+			group: 'seo',
+		}),
+		defineField({
+			title: 'Meta Description',
+			name: 'metaDescription',
+			type: 'string',
+			group: 'seo',
+		}),
+		defineField({
+			type: 'image',
+			name: 'ogImage',
+			title: 'Open Graph Image',
+			description: 'Open graph image to display',
+			group: 'seo',
+			options: {
+				hotspot: true,
+			},
+			fields: [
+				defineField({
+					name: 'alt',
+					type: 'string',
+					title: 'Alternative Text',
+				}),
+			],
 		}),
 	],
 	preview: {

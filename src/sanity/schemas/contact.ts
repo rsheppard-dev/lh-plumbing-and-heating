@@ -10,17 +10,23 @@ const contact = defineType({
 			name: 'icons',
 		},
 	],
+	groups: [
+		{ title: 'Content', name: 'content', default: true },
+		{ title: 'SEO', name: 'seo' },
+	],
 	fields: [
 		defineField({
 			title: 'Subheading',
 			name: 'subheading',
 			type: 'string',
+			group: 'content',
 			validation: Rule => Rule.required(),
 		}),
 		defineField({
 			title: 'Heading',
 			name: 'heading',
 			type: 'string',
+			group: 'content',
 			validation: Rule => Rule.required(),
 		}),
 		defineField({
@@ -28,6 +34,7 @@ const contact = defineType({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 			validation: Rule => Rule.required(),
 		}),
 		defineField({
@@ -36,6 +43,7 @@ const contact = defineType({
 			name: 'phoneIcon',
 			type: 'file',
 			fieldset: 'icons',
+			group: 'content',
 			options: {
 				accept: '.json',
 			},
@@ -47,6 +55,7 @@ const contact = defineType({
 			name: 'emailIcon',
 			type: 'file',
 			fieldset: 'icons',
+			group: 'content',
 			options: {
 				accept: '.json',
 			},
@@ -58,6 +67,7 @@ const contact = defineType({
 			name: 'locationIcon',
 			type: 'file',
 			fieldset: 'icons',
+			group: 'content',
 			options: {
 				accept: '.json',
 			},
@@ -67,8 +77,38 @@ const contact = defineType({
 			title: 'Success Message',
 			description: 'Message to display when visitor submits contact form.',
 			name: 'successMessage',
+			group: 'content',
 			type: 'string',
 			validation: Rule => Rule.required(),
+		}),
+		defineField({
+			title: 'Meta Title',
+			name: 'metaTitle',
+			type: 'string',
+			group: 'seo',
+		}),
+		defineField({
+			title: 'Meta Description',
+			name: 'metaDescription',
+			type: 'string',
+			group: 'seo',
+		}),
+		defineField({
+			type: 'image',
+			name: 'ogImage',
+			title: 'Open Graph Image',
+			description: 'Open graph image to display',
+			group: 'seo',
+			options: {
+				hotspot: true,
+			},
+			fields: [
+				defineField({
+					name: 'alt',
+					type: 'string',
+					title: 'Alternative Text',
+				}),
+			],
 		}),
 	],
 	preview: {
