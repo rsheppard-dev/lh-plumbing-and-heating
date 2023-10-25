@@ -122,7 +122,7 @@ export default function ContactSection({
 									lottieRef={phoneRef}
 									animationData={phoneAnimationData}
 									autoplay={false}
-									className='w-fit block h-12'
+									className='w-12 block h-12'
 								/>
 							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
@@ -141,7 +141,7 @@ export default function ContactSection({
 									lottieRef={emailRef}
 									animationData={emailAnimationData}
 									autoplay={false}
-									className='w-fit block h-12'
+									className='w-12 block h-12'
 								/>
 							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
@@ -161,7 +161,7 @@ export default function ContactSection({
 									lottieRef={locRef}
 									animationData={locationAnimationData}
 									autoplay={false}
-									className='block w-fit h-12'
+									className='block w-12 h-12'
 								/>
 							</span>
 							<span className='grow font-sourceSans font-bold text-zinc-900'>
