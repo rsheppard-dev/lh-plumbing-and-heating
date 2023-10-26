@@ -72,12 +72,12 @@ export default function AboutSection({ type = 'section', data }: Props) {
 					</div>
 				</div>
 
-				<div className='relative col-span-12 lg:col-span-6 w-full h-80 lg:h-full'>
+				<div className='relative overflow-hidden col-span-12 lg:col-span-6 w-full h-80 lg:h-full'>
 					<Image
 						src={urlFor(image.url).auto('format').url()}
 						alt={image.alt}
 						fill
-						sizes='(max-width: 768px) 100%, 50%'
+						sizes='(min-width: 1380px) 624px, (min-width: 1040px) calc(37.5vw + 114px), calc(100vw - 32px)'
 						className='object-contain object-center'
 					/>
 				</div>

@@ -1,6 +1,8 @@
 import about from './about';
+import category from './category';
 import certification from './certification';
 import contact from './contact';
+import gallery from './gallery';
 import homePage from './homePage';
 import service from './service';
 import settings from './settings';
@@ -14,6 +16,8 @@ const types = [
 	about,
 	service,
 	contact,
+	gallery,
+	category,
 ];
 
 export default types;

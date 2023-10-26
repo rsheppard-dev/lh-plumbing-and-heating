@@ -59,6 +59,34 @@ export const serviceQuery = groq`*[_type == "service"][0]{
             metaTitle,
             metaDescription,
             ogImage{
+                image{
+                    "url": asset->url,
+                    alt,
+                    "height": asset->metadata.dimensions.height,
+                    "width": asset->metadata.dimensions.width,
+                    "size": asset->size
+                }
+            }
+        }`;
+
+export const galleryQuery = groq`*[_type == "gallery"][0]{
+            subheading,
+            heading,
+            imageGallery[]{
+              image{
+                "url": asset->url,
+                alt,
+                "height": asset->metadata.dimensions.height,
+                "width": asset->metadata.dimensions.width,
+                "size": asset->size
+              },
+              categories[]{
+                categoryName->
+              },
+            },
+            metaTitle,
+            metaDescription,
+            ogImage{
                 "url": asset->url,
                 alt,
                 "height": asset->metadata.dimensions.height,
@@ -104,6 +132,11 @@ export const testimonialQuery = groq`*[_type == "testimonial"]{
             reviewDate,
             rating,
             content
+        }`;
+
+export const categoryQuery = groq`*[_type == "category"]{
+            _id,
+            name,
         }`;
 
 export const settingsQuery = groq`*[_id == "settings"][0]{

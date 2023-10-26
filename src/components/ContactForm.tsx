@@ -80,7 +80,7 @@ export default function ContactForm({ successMessage }: Props) {
 								*
 							</span>
 						</label>
-						<Field type='text' name='firstName' required />
+						<Field type='text' name='firstName' id='firstName' required />
 						<ErrorMessage
 							name='firstName'
 							component='div'
@@ -97,7 +97,7 @@ export default function ContactForm({ successMessage }: Props) {
 								*
 							</span>
 						</label>
-						<Field type='text' name='lastName' required />
+						<Field type='text' name='lastName' id='lastName' required />
 						<ErrorMessage
 							name='lastName'
 							component='div'
@@ -114,7 +114,7 @@ export default function ContactForm({ successMessage }: Props) {
 								*
 							</span>
 						</label>
-						<Field type='tel' name='phone' required />
+						<Field type='tel' name='phone' id='phone' required />
 						<ErrorMessage
 							name='phone'
 							component='div'
@@ -128,7 +128,7 @@ export default function ContactForm({ successMessage }: Props) {
 						>
 							Email{' '}
 						</label>
-						<Field type='email' name='email' />
+						<Field type='email' name='email' id='email' />
 						<ErrorMessage
 							name='email'
 							component='div'
@@ -145,7 +145,13 @@ export default function ContactForm({ successMessage }: Props) {
 								*
 							</span>
 						</label>
-						<Field as='textarea' name='message' rows={6} required />
+						<Field
+							as='textarea'
+							name='message'
+							id='message'
+							rows={6}
+							required
+						/>
 						<ErrorMessage
 							name='message'
 							component='div'

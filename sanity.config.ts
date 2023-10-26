@@ -9,6 +9,8 @@ import {
 	FaBuilding,
 	FaMedal,
 	FaTools,
+	FaImage,
+	FaTags,
 } from 'react-icons/fa';
 import { FaMessage } from 'react-icons/fa6';
 import types from '@/sanity/schemas';
@@ -33,6 +35,7 @@ const singletonTypes = new Set([
 	'service',
 	'settings',
 	'contact',
+	'gallery',
 ]);
 
 const singletonListItem = (
@@ -61,6 +64,7 @@ const config = defineConfig({
 						singletonListItem(S, 'homePage', 'Home Section').icon(FaHome),
 						singletonListItem(S, 'about', 'About Section').icon(FaBuilding),
 						singletonListItem(S, 'service', 'Service Section').icon(FaTools),
+						singletonListItem(S, 'gallery', 'Gallery Section').icon(FaImage),
 						singletonListItem(S, 'contact', 'Contact Section').icon(FaMessage),
 
 						S.divider(),
@@ -71,6 +75,9 @@ const config = defineConfig({
 						S.documentTypeListItem('certification')
 							.title('Certifications')
 							.icon(FaMedal),
+						S.documentTypeListItem('category')
+							.title('Image Categories')
+							.icon(FaTags),
 
 						S.divider(),
 
