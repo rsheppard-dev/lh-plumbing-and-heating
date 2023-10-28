@@ -2,7 +2,7 @@ import ICategory from '@/interfaces/ICategory';
 import SectionHeader from './SectionHeader';
 import Wrapper from './Wrapper';
 import IGallery from '@/interfaces/IGallery';
-import GalleryItem from './GalleryItem';
+import ImageModal from './ImageModal';
 
 type Props = {
 	categories: ICategory[];
@@ -48,7 +48,7 @@ export default function GallerySection({ categories, gallery }: Props) {
 
 				<div className='grid gap-2 grid-cols-gallery mb-10'>
 					{gallery.imageGallery.map(item => (
-						<GalleryItem key={item._key} item={item} />
+						<ImageModal key={item._key} item={item} />
 					))}
 				</div>
 			</Wrapper>
