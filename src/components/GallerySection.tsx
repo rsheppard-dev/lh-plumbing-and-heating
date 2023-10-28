@@ -2,6 +2,7 @@ import ICategory from '@/interfaces/ICategory';
 import SectionHeader from './SectionHeader';
 import Wrapper from './Wrapper';
 import IGallery from '@/interfaces/IGallery';
+import GalleryItem from './GalleryItem';
 
 type Props = {
 	categories: ICategory[];
@@ -10,14 +11,14 @@ type Props = {
 
 export default function GallerySection({ categories, gallery }: Props) {
 	return (
-		<div className='pt-32'>
+		<section aria-label='Gallery Section' className='pt-32'>
 			<SectionHeader
 				heading={gallery?.heading}
 				subheading={gallery?.subheading}
 				type='page'
 			/>
 			<Wrapper>
-				<aside className='flex flex-col md:flex-row w-fit'>
+				<aside className='flex flex-col md:flex-row w-fit mb-10'>
 					<div className='bg-brand-yellow h-full px-6 py-3'>
 						<h3 className='font-montserrat font-bold text-zinc-900'>Filter</h3>
 					</div>
@@ -44,7 +45,13 @@ export default function GallerySection({ categories, gallery }: Props) {
 						))}
 					</form>
 				</aside>
+
+				<div className='grid gap-2 grid-cols-gallery mb-10'>
+					{gallery.imageGallery.map(item => (
+						<GalleryItem key={item._key} item={item} />
+					))}
+				</div>
 			</Wrapper>
-		</div>
+		</section>
 	);
 }

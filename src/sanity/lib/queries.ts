@@ -73,6 +73,7 @@ export const galleryQuery = groq`*[_type == "gallery"][0]{
             subheading,
             heading,
             imageGallery[]{
+              _key,
               image{
                 "url": asset->url,
                 alt,

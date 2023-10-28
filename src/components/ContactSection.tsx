@@ -45,7 +45,10 @@ export default function ContactSection({
 	}
 
 	return (
-		<section className={`${type === 'page' ? 'pt-32 mb-10' : 'mb-10'}`}>
+		<section
+			aria-label='Contact Section'
+			className={`${type === 'page' ? 'pt-32 mb-10' : 'mb-10'}`}
+		>
 			<SectionHeader
 				subheading={contact.subheading}
 				heading={contact.heading}

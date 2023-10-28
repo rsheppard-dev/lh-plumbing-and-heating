@@ -17,7 +17,7 @@ const config: Config = {
 			},
 			keyframes: {
 				'animate-enter': {
-					'0%': { opacity: '0', transform: '' },
+					'0%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
 				'animate-leave': {
@@ -26,8 +26,11 @@ const config: Config = {
 				},
 			},
 			animation: {
-				'animate-enter': 'animate-enter 0.5s ease-in-out',
-				'animate-leave': 'animate-leave 0.5s ease-in-out',
+				'animate-enter': 'animate-enter 1s ease-in-out',
+				'animate-leave': 'animate-leave 1s ease-in-out',
+			},
+			gridTemplateColumns: {
+				gallery: 'repeat(auto-fit, minmax(250px, 1fr))',
 			},
 		},
 	},

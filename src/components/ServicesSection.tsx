@@ -15,7 +15,10 @@ export default async function ServicesSection({
 	const { heading, subheading, services } = data;
 
 	return (
-		<section className={`${type === 'page' ? 'pt-32 mb-10' : 'mb-10'}`}>
+		<section
+			aria-label='Services Section'
+			className={`${type === 'page' ? 'pt-32 mb-10' : 'mb-10'}`}
+		>
 			<SectionHeader type={type} heading={heading} subheading={subheading} />
 
 			<Wrapper className='grid auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10'>

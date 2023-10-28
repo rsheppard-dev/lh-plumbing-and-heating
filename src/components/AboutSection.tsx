@@ -15,6 +15,7 @@ export default function AboutSection({ type = 'section', data }: Props) {
 	return (
 		<Wrapper
 			title='About Section'
+			as='section'
 			className={`${type === 'page' ? 'pt-32 pb-10' : 'mb-10'}`}
 		>
 			<div className='grid grid-cols-12 space-y-6 lg:space-y-0 lg:space-x-6 justify-center'>
