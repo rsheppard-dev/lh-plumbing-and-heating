@@ -32,16 +32,9 @@ type Props = {
 };
 
 export default async function Gallery({ searchParams }: Props) {
-	const page = searchParams['page'] ?? 1;
-	const limit = searchParams['limit'] ?? 5;
-
-	const start = (Number(page) - 1) * Number(limit);
-	const end = start + Number(limit);
-
 	const categoriesPromise = sanityFetch<ICategory[]>({ query: categoryQuery });
 	const galleryPromise = sanityFetch<IGallery>({
 		query: galleryQuery,
-		params: { start, end },
 	});
 
 	const [categoriesData, galleryData] = await Promise.all([
@@ -49,9 +42,13 @@ export default async function Gallery({ searchParams }: Props) {
 		galleryPromise,
 	]);
 
-	const entries = galleryData.imageGallery.slice(start, end);
+	const page = searchParams['page'] ?? 1;
+	const limit = searchParams['limit'] ?? galleryData?.limit;
 
-	console.log();
+	const start = (Number(page) - 1) * Number(limit);
+	const end = start + Number(limit);
+
+	const entries = galleryData.imageGallery.slice(start, end);
 	return (
 		<GallerySection
 			categories={categoriesData}

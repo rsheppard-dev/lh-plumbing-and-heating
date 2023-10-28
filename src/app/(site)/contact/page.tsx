@@ -28,6 +28,5 @@ export default async function Contact() {
 		settingsPromise,
 		contactPromise,
 	]);
-	console.log(contact.metaTitle);
 	return <ContactSection type='page' settings={settings} contact={contact} />;
 }

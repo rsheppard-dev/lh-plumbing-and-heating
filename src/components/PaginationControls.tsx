@@ -6,17 +6,19 @@ import Wrapper from './Wrapper';
 type Props = {
 	hasNextPage: boolean;
 	hasPreviousPage: boolean;
+	resultsPerPage: number;
 };
 
 export default function PaginationControls({
 	hasNextPage,
 	hasPreviousPage,
+	resultsPerPage,
 }: Props) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 
 	const page = searchParams.get('page') ?? 1;
-	const limit = searchParams.get('limit') ?? 5;
+	const limit = searchParams.get('limit') ?? resultsPerPage;
 	return (
 		<Wrapper className='mb-10'>
 			<div className='flex gap-2 items-center justify-center mb-5'>

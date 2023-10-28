@@ -82,9 +82,10 @@ export const galleryQuery = groq`*[_type == "gallery"][0]{
                 "size": asset->size
               },
               categories[]{
-                categoryName->
+                category->
               },
             },
+            limit,
             metaTitle,
             metaDescription,
             ogImage{

@@ -7,6 +7,7 @@ export default interface IGallery {
 	subheading: string;
 	heading: string;
 	imageGallery: IImageData[];
+	limit: number;
 	metaTitle: string;
 	metaDescription: string;
 	ogImage: IImage;

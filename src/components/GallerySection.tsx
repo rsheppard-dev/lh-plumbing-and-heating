@@ -32,10 +32,13 @@ export default function GallerySection({
 					<ImageModal key={item._key} item={item} />
 				))}
 			</Wrapper>
-			<PaginationControls
-				hasNextPage={end < gallery.imageGallery.length}
-				hasPreviousPage={start > 0}
-			/>
+			{gallery.imageGallery.length > end ? (
+				<PaginationControls
+					hasNextPage={end < gallery.imageGallery.length}
+					hasPreviousPage={start > 0}
+					resultsPerPage={gallery.limit}
+				/>
+			) : null}
 		</section>
 	);
 }

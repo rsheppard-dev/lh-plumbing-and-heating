@@ -87,6 +87,15 @@ const gallery = defineType({
 			],
 		}),
 		defineField({
+			title: 'Results per Page',
+			name: 'limit',
+			description: 'How many images to display per page.',
+			type: 'number',
+			initialValue: 10,
+			group: 'content',
+			validation: Rule => Rule.min(5).max(50),
+		}),
+		defineField({
 			title: 'Meta Title',
 			name: 'metaTitle',
 			type: 'string',
