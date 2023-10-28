@@ -115,7 +115,7 @@ export const contactQuery = groq`*[_type == "contact"][0]{
             }
         }`;
 
-export const certificationQuery = groq`*[_type == "certification"]{
+export const certificationQuery = groq`*[_type == "certification"] | order(_createdAt desc){
             _id,
             title,
             logo{
@@ -127,7 +127,7 @@ export const certificationQuery = groq`*[_type == "certification"]{
             }
         }`;
 
-export const testimonialQuery = groq`*[_type == "testimonial"]{
+export const testimonialQuery = groq`*[_type == "testimonial"] | order(_createdAt desc){
             _id,
             name,
             reviewDate,
@@ -135,7 +135,7 @@ export const testimonialQuery = groq`*[_type == "testimonial"]{
             content
         }`;
 
-export const categoryQuery = groq`*[_type == "category"]{
+export const categoryQuery = groq`*[_type == "category"] | order(name asc){
             _id,
             name,
         }`;
