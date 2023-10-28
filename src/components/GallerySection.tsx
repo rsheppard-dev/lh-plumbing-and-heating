@@ -9,7 +9,6 @@ type Props = {
 };
 
 export default function GallerySection({ categories, gallery }: Props) {
-	console.log(gallery.imageGallery[0].categories);
 	return (
 		<div className='pt-32'>
 			<SectionHeader

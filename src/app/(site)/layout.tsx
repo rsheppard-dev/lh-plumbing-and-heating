@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	const settings = await sanityFetch<ISettings>({ query: settingsQuery });
 
 	return {
+		metadataBase: new URL('http://localhost:3000'),
 		title: settings?.metaTitle,
 		description: settings?.metaDescription,
 		openGraph: {
