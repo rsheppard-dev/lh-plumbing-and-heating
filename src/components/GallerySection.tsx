@@ -24,7 +24,7 @@ export default function GallerySection({ categories, gallery }: Props) {
 					</div>
 					<form
 						action=''
-						className='grid grid-cols-2 md:flex md:items-center gap-2 bg-brand-blue grow px-6 py-3 h-full'
+						className='grid grid-cols-2 md:grid-cols-none md:flex md:items-center gap-2 bg-brand-blue grow px-6 py-3 h-full'
 					>
 						{categories.map(category => (
 							<div key={category?._id} className='flex items-center gap-2'>
