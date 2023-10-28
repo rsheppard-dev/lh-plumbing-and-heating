@@ -25,13 +25,40 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default async function Gallery() {
+type Props = {
+	searchParams: {
+		[key: string]: string | string[] | undefined;
+	};
+};
+
+export default async function Gallery({ searchParams }: Props) {
+	const page = searchParams['page'] ?? 1;
+	const limit = searchParams['limit'] ?? 5;
+
+	const start = (Number(page) - 1) * Number(limit);
+	const end = start + Number(limit);
+
 	const categoriesPromise = sanityFetch<ICategory[]>({ query: categoryQuery });
-	const galleryPromise = sanityFetch<IGallery>({ query: galleryQuery });
+	const galleryPromise = sanityFetch<IGallery>({
+		query: galleryQuery,
+		params: { start, end },
+	});
 
 	const [categoriesData, galleryData] = await Promise.all([
 		categoriesPromise,
 		galleryPromise,
 	]);
-	return <GallerySection categories={categoriesData} gallery={galleryData} />;
+
+	const entries = galleryData.imageGallery.slice(start, end);
+
+	console.log();
+	return (
+		<GallerySection
+			categories={categoriesData}
+			gallery={galleryData}
+			currentImages={entries}
+			start={start}
+			end={end}
+		/>
+	);
 }

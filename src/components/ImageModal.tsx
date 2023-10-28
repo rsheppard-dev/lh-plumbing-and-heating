@@ -6,7 +6,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { BsXSquareFill } from 'react-icons/bs';
 import { IImageData } from '@/interfaces/IGallery';
-import Wrapper from './Wrapper';
 
 type Props = {
 	item: IImageData;
@@ -25,7 +24,7 @@ export default function ImageModal({ item }: Props) {
 	return (
 		<>
 			<button onClick={isOpen ? closeModal : openModal}>
-				<figure className='h-64 bg-zinc-300 relative overflow-hidden'>
+				<figure className='h-64 bg-zinc-300 relative overflow-hidden aspect-w-16 aspect-h-4'>
 					<Image
 						src={item.image.url}
 						alt={item.image.alt}
