@@ -8,6 +8,7 @@ import PaginationControls from './PaginationControls';
 type Props = {
 	categories: ICategory[];
 	gallery: IGallery;
+	limit: number;
 	start: number;
 	end: number;
 };
@@ -15,6 +16,7 @@ type Props = {
 export default function GallerySection({
 	categories,
 	gallery,
+	limit,
 	start,
 	end,
 }: Props) {
@@ -31,12 +33,19 @@ export default function GallerySection({
 				))}
 			</Wrapper>
 
-			<PaginationControls
-				hasNextPage={end < gallery.totalImages}
-				hasPreviousPage={start > 0}
-				totalResults={gallery.totalImages}
-				resultsPerPage={gallery.limit}
-			/>
+			{limit < gallery.totalImages ? (
+				<PaginationControls
+					hasNextPage={end < gallery.totalImages}
+					hasPreviousPage={start > 0}
+					totalResults={gallery.totalImages}
+					resultsPerPage={gallery.limit}
+				/>
+			) : (
+				<div>
+					<p>{limit}</p>
+					<p>{gallery.totalImages}</p>
+				</div>
+			)}
 		</section>
 	);
 }

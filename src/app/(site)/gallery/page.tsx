@@ -55,6 +55,7 @@ export default async function Gallery({ searchParams }: Props) {
 		<GallerySection
 			categories={categoriesData}
 			gallery={galleryData}
+			limit={Number(limit)}
 			start={start}
 			end={end}
 		/>
