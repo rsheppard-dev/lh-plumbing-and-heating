@@ -7,6 +7,8 @@ import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import ISettings from '@/interfaces/ISettings';
 import { settingsQuery } from '@/sanity/lib/queries';
 import { Metadata } from 'next';
+import Analytics from '@/components/Analytics';
+import CookieBanner from '@/components/CookieBanner';
 
 const montserrat = Montserrat({
 	subsets: ['latin'],
@@ -74,15 +76,17 @@ type Props = {
 
 export default async function RootLayout({ children }: Props) {
 	const settings = await sanityFetch<ISettings>({ query: settingsQuery });
-
+	const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string;
 	return (
 		<html lang='en'>
+			<Analytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
 			<body
 				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50 flex flex-col min-h-screen overflow-x-hidden`}
 			>
 				<Header settings={settings} />
 				<main className='grow'>{children}</main>
 				<Footer settings={settings} />
+				<CookieBanner />
 			</body>
 		</html>
 	);
