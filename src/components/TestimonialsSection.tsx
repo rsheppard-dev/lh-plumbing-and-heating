@@ -37,6 +37,7 @@ export default function TestimonialsSection({ data }: Props) {
 			className='relative mb-10 w-full overflow-x-clip'
 		>
 			<div
+				{...swipeable}
 				style={{
 					transform: `translateX(calc(-${slideIndex * 102}%))`,
 				}}
@@ -53,11 +54,7 @@ export default function TestimonialsSection({ data }: Props) {
 						options
 					).format(date);
 					return (
-						<div
-							key={testimonial._id}
-							{...swipeable}
-							className='min-w-full mb-10'
-						>
+						<div key={testimonial._id} className='min-w-full mb-10'>
 							<Testimonial
 								index={i}
 								slideIndex={slideIndex}
