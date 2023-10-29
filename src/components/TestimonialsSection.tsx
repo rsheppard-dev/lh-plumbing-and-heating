@@ -53,7 +53,11 @@ export default function TestimonialsSection({ data }: Props) {
 						options
 					).format(date);
 					return (
-						<div key={testimonial._id} className='min-w-full mb-10'>
+						<div
+							key={testimonial._id}
+							{...swipeable}
+							className='min-w-full mb-10'
+						>
 							<Testimonial
 								index={i}
 								slideIndex={slideIndex}

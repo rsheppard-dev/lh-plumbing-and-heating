@@ -21,8 +21,11 @@ export default function useSlider<T>(
 	const isLastSlide = slideIndex === slides.length - 1;
 
 	const swipeable = useSwipeable({
-		onSwipedLeft: () => isFirstSlide && setSlideIndex(() => slideIndex + 1),
-		onSwipedRight: () => !isLastSlide && setSlideIndex(() => slideIndex - 1),
+		onSwipedLeft: () => !isLastSlide && nextSlide(),
+		onSwipedRight: () => !isFirstSlide && previousSlide(),
+		preventScrollOnSwipe: true,
+		trackMouse: true,
+		swipeDuration: 500,
 	});
 
 	const nextSlide = useCallback(
