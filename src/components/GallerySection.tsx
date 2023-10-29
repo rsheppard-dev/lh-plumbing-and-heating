@@ -40,12 +40,7 @@ export default function GallerySection({
 					totalResults={gallery.totalImages}
 					resultsPerPage={gallery.limit}
 				/>
-			) : (
-				<div>
-					<p>{limit}</p>
-					<p>{gallery.totalImages}</p>
-				</div>
-			)}
+			) : null}
 		</section>
 	);
 }

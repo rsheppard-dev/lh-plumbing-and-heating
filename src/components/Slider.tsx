@@ -15,11 +15,18 @@ type Props = {
 };
 
 export default function Slider({ images, timer, children }: Props) {
-	const { slideIndex, isFirstSlide, isLastSlide, nextSlide, previousSlide } =
-		useSlider<IImage>(images, { timer });
+	const {
+		slideIndex,
+		isFirstSlide,
+		isLastSlide,
+		nextSlide,
+		previousSlide,
+		swipeable,
+	} = useSlider<IImage>(images, { timer });
 	return (
 		<div className='group overflow-hidden relative h-[700px] w-full aspect-w-16 aspect-h-4'>
 			<div
+				{...swipeable}
 				style={{
 					transform: `translateX(-${slideIndex * 100}%)`,
 				}}
