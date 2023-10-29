@@ -72,6 +72,7 @@ export const serviceQuery = groq`*[_type == "service"][0]{
 export const galleryQuery = groq`*[_type == "gallery"][0]{
             subheading,
             heading,
+            "totalImages": count(imageGallery),
             imageGallery[]{
               _key,
               image{

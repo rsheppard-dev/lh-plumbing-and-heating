@@ -6,6 +6,7 @@ export default interface IGallery {
 	_createdAt: Date;
 	subheading: string;
 	heading: string;
+	totalImages: number;
 	imageGallery: IImageData[];
 	limit: number;
 	metaTitle: string;
