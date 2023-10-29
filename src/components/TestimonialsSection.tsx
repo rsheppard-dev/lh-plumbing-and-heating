@@ -37,7 +37,6 @@ export default function TestimonialsSection({ data }: Props) {
 			className='relative mb-10 w-full overflow-x-clip'
 		>
 			<div
-				{...swipeable}
 				style={{
 					transform: `translateX(calc(-${slideIndex * 102}%))`,
 				}}
