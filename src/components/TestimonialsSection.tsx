@@ -6,7 +6,6 @@ import useSlider from '@/hooks/useSlider';
 import Wrapper from './Wrapper';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Testimonial from './Testimonial';
-import { useSwipeable } from 'react-swipeable';
 
 type Props = {
 	data: ITestimonial[];
@@ -15,14 +14,8 @@ type Props = {
 export default function TestimonialsSection({ data }: Props) {
 	const [isOpenArray, setIsOpenArray] = useState(data.map(() => false));
 
-	const { slideIndex, goToSlide, isFirstSlide, isLastSlide } =
-		useSlider<ITestimonial>(data, {
-			timer: 8,
-		});
-
-	const handlers = useSwipeable({
-		onSwipedLeft: () => !isFirstSlide && goToSlide(slideIndex + 1),
-		onSwipedRight: () => !isLastSlide && goToSlide(slideIndex - 1),
+	const { slideIndex, goToSlide, swipeable } = useSlider<ITestimonial>(data, {
+		timer: 8,
 	});
 
 	function openModal(index: number) {
@@ -44,7 +37,7 @@ export default function TestimonialsSection({ data }: Props) {
 			className='relative mb-10 w-full overflow-x-clip'
 		>
 			<div
-				{...handlers}
+				{...swipeable}
 				style={{
 					transform: `translateX(calc(-${slideIndex * 102}%))`,
 				}}

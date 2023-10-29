@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 type SliderOptions = {
 	timer?: number;
@@ -18,6 +19,11 @@ export default function useSlider<T>(
 
 	const isFirstSlide = slideIndex === 0;
 	const isLastSlide = slideIndex === slides.length - 1;
+
+	const swipeable = useSwipeable({
+		onSwipedLeft: () => !isFirstSlide && setSlideIndex(() => slideIndex + 1),
+		onSwipedRight: () => !isLastSlide && setSlideIndex(() => slideIndex - 1),
+	});
 
 	const nextSlide = useCallback(
 		function () {
@@ -71,5 +77,6 @@ export default function useSlider<T>(
 		nextSlide,
 		previousSlide,
 		goToSlide,
+		swipeable,
 	};
 }
