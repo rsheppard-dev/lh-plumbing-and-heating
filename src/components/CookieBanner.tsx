@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { getLocalStorage, setLocalStorage } from '@/lib/storageHelper';
 
 export default function CookieBanner() {
@@ -31,12 +30,9 @@ export default function CookieBanner() {
                          bg-brand-blue shadow`}
 		>
 			<div className='text-center'>
-				<Link href='/info/cookies'>
-					<p className='font-sourceSans text-white'>
-						We use <span className='font-bold text-brand-yellow'>cookies</span>{' '}
-						on our site for analytics.
-					</p>
-				</Link>
+				<p className='font-sourceSans text-white'>
+					We use cookies on our site for analytic purposes.
+				</p>
 			</div>
 
 			<div className='flex gap-2'>
