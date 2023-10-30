@@ -38,6 +38,10 @@ export default function ContactForm({ successMessage }: Props) {
 			resetForm: () => void;
 		}
 	) {
+		// honeypot spam prevention
+		if (values.companyName === '') return;
+		delete values?.companyName;
+
 		try {
 			fetch('/api/contact', {
 				method: 'POST',
@@ -70,6 +74,7 @@ export default function ContactForm({ successMessage }: Props) {
 		>
 			{({ isSubmitting }) => (
 				<Form className='px-6 py-3 sm:px-8 sm:py-4 bg-brand-blue space-y-4'>
+					<Field type='hidden' name='companyName' id='companyName' />
 					<div className='flex flex-col gap-2'>
 						<label
 							className='font-sourceSans font-bold text-sm text-white'

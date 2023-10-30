@@ -1,0 +1,38 @@
+import { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+	const baseUrl = 'https://www.lhplumbing-harrow.co.uk';
+
+	return [
+		{
+			url: baseUrl,
+			lastModified: new Date(),
+			changeFrequency: 'yearly',
+			priority: 0.8,
+		},
+		{
+			url: `${baseUrl}/about`,
+			lastModified: new Date(),
+			changeFrequency: 'yearly',
+			priority: 0.8,
+		},
+		{
+			url: `${baseUrl}/services`,
+			lastModified: new Date(),
+			changeFrequency: 'yearly',
+			priority: 0.8,
+		},
+		{
+			url: `${baseUrl}/gallery`,
+			lastModified: new Date(),
+			changeFrequency: 'yearly',
+			priority: 0.8,
+		},
+		{
+			url: `${baseUrl}/contact`,
+			lastModified: new Date(),
+			changeFrequency: 'yearly',
+			priority: 0.8,
+		},
+	];
+}

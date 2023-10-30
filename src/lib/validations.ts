@@ -1,6 +1,7 @@
 import { TypeOf, z } from 'zod';
 
 export const contactSchema = z.object({
+	companyName: z.undefined(),
 	firstName: z.string({
 		required_error: 'First name is required.',
 	}),

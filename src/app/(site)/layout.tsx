@@ -27,8 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
 	const settings = await sanityFetch<ISettings>({ query: settingsQuery });
 
 	return {
-		metadataBase: new URL('http://localhost:3000'),
-		title: settings?.metaTitle,
+		metadataBase: new URL('https://www.lhplumbing-harrow.co.uk'),
+		title: {
+			default: settings.metaTitle,
+			template: `%s | ${settings.metaTitle}`,
+		},
 		description: settings?.metaDescription,
 		openGraph: {
 			images: [settings?.ogImage?.url],
