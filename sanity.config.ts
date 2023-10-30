@@ -10,7 +10,6 @@ import {
 	FaMedal,
 	FaTools,
 	FaImage,
-	FaTags,
 } from 'react-icons/fa';
 import { FaMessage } from 'react-icons/fa6';
 import types from '@/sanity/schemas';
@@ -75,9 +74,6 @@ const config = defineConfig({
 						S.documentTypeListItem('certification')
 							.title('Certifications')
 							.icon(FaMedal),
-						S.documentTypeListItem('category')
-							.title('Image Categories')
-							.icon(FaTags),
 
 						S.divider(),
 

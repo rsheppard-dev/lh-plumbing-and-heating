@@ -1,5 +1,4 @@
 import about from './about';
-import category from './category';
 import certification from './certification';
 import contact from './contact';
 import gallery from './gallery';
@@ -17,7 +16,6 @@ const types = [
 	service,
 	contact,
 	gallery,
-	category,
 ];
 
 export default types;

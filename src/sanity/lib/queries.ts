@@ -74,17 +74,12 @@ export const galleryQuery = groq`*[_type == "gallery"][0]{
             heading,
             "totalImages": count(imageGallery),
             imageGallery[]{
-              _key,
-              image{
+                _key,
                 "url": asset->url,
                 alt,
                 "height": asset->metadata.dimensions.height,
                 "width": asset->metadata.dimensions.width,
                 "size": asset->size
-              },
-              categories[]{
-                category->
-              },
             },
             limit,
             metaTitle,

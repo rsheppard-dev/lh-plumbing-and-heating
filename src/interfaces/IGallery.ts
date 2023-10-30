@@ -7,15 +7,9 @@ export default interface IGallery {
 	subheading: string;
 	heading: string;
 	totalImages: number;
-	imageGallery: IImageData[];
+	imageGallery: IImage[];
 	limit: number;
 	metaTitle: string;
 	metaDescription: string;
 	ogImage: IImage;
-}
-
-export interface IImageData {
-	_key: string;
-	image: IImage;
-	categories: string[];
 }

@@ -30,59 +30,21 @@ const gallery = defineType({
 			group: 'content',
 			of: [
 				defineArrayMember({
+					type: 'image',
+					name: 'image',
 					title: 'Image',
-					name: 'imageData',
-					type: 'object',
+					options: {
+						hotspot: true,
+					},
+					validation: Rule => Rule.required(),
 					fields: [
 						defineField({
-							type: 'image',
-							name: 'image',
-							title: 'Image',
-							options: {
-								hotspot: true,
-							},
+							name: 'alt',
+							type: 'string',
+							title: 'Alternative Text',
 							validation: Rule => Rule.required(),
-							fields: [
-								defineField({
-									name: 'alt',
-									type: 'string',
-									title: 'Alternative Text',
-									validation: Rule => Rule.required(),
-								}),
-							],
-						}),
-						defineField({
-							type: 'array',
-							title: 'Categories',
-							name: 'categories',
-							of: [
-								defineArrayMember({
-									title: 'Category',
-									description:
-										'Assign at least one category for image to be filtered by.',
-									name: 'category',
-									type: 'reference',
-									to: [{ type: 'category' }],
-									options: {
-										disableNew: false,
-									},
-									validation: Rule => Rule.required(),
-								}),
-							],
 						}),
 					],
-					preview: {
-						select: {
-							image: 'image',
-						},
-						prepare(selection) {
-							const { image } = selection;
-							return {
-								media: image,
-								title: image.alt,
-							};
-						},
-					},
 				}),
 			],
 		}),

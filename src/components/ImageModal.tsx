@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { BsXSquareFill } from 'react-icons/bs';
-import { IImageData } from '@/interfaces/IGallery';
+import IImage from '@/interfaces/IImage';
 
 type Props = {
-	item: IImageData;
+	image: IImage;
 };
 
-export default function ImageModal({ item }: Props) {
+export default function ImageModal({ image }: Props) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	function openModal() {
@@ -26,8 +26,8 @@ export default function ImageModal({ item }: Props) {
 			<button onClick={isOpen ? closeModal : openModal}>
 				<figure className='h-64 bg-zinc-300 relative overflow-hidden aspect-w-16 aspect-h-4'>
 					<Image
-						src={item.image.url}
-						alt={item.image.alt}
+						src={image.url}
+						alt={image.alt}
 						fill
 						sizes='(min-width: 1380px) 306px, (min-width: 1060px) calc(18.33vw + 57px), (min-width: 800px) calc(33.33vw - 16px), (min-width: 540px) calc(50vw - 20px), calc(100vw - 32px)'
 						className='object-cover hover:scale-110 transition-transform'
@@ -54,10 +54,10 @@ export default function ImageModal({ item }: Props) {
 								className='h-full w-full bg-zinc-300 relative overflow-hidden'
 							>
 								<Image
-									src={item.image.url}
-									alt={item.image.alt}
-									width={item.image.width}
-									height={item.image.height}
+									src={image.url}
+									alt={image.alt}
+									width={image.width}
+									height={image.height}
 									className='object-cover'
 								/>
 							</figure>
