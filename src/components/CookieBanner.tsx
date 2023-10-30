@@ -9,7 +9,7 @@ export default function CookieBanner() {
 	const setCookieConsent = useCallback((isAllowed: boolean) => {
 		const newValue = isAllowed ? 'granted' : 'denied';
 
-		setLocalStorage('cookie_consent', isAllowed);
+		setLocalStorage<boolean>('cookie_consent', isAllowed);
 
 		window.gtag('consent', 'update', {
 			analytics_storage: newValue,
@@ -17,7 +17,7 @@ export default function CookieBanner() {
 	}, []);
 
 	useEffect(() => {
-		const storedCookieConsent = getLocalStorage('cookie_consent', null);
+		const storedCookieConsent = getLocalStorage<null>('cookie_consent', null);
 
 		storedCookieConsent === null && setIsVisible(true);
 

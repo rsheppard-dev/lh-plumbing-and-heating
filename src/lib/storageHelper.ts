@@ -1,6 +1,6 @@
 import 'client-only';
 
-export function getLocalStorage(key: string, defaultValue: any) {
+export function getLocalStorage<T>(key: string, defaultValue: T) {
 	const stickyValue = localStorage.getItem(key);
 
 	return stickyValue !== null && stickyValue !== undefined
@@ -8,6 +8,8 @@ export function getLocalStorage(key: string, defaultValue: any) {
 		: defaultValue;
 }
 
-export function setLocalStorage(key: string, value: any) {
-	localStorage.setItem(key, JSON.stringify(value));
+export function setLocalStorage<T>(key: string, value: T) {
+	const expiryDate = new Date().setDate(new Date().getDate() + 182.5);
+
+	if (value !== null) localStorage.setItem(key, JSON.stringify(value));
 }
