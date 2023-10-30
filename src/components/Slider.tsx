@@ -22,11 +22,14 @@ export default function Slider({ images, timer, children }: Props) {
 		nextSlide,
 		previousSlide,
 		swipeable,
+		stopScroll,
 	} = useSlider<IImage>(images, { timer });
 	return (
 		<div
 			{...swipeable}
-			className='group overflow-hidden relative h-[700px] w-full aspect-w-16 aspect-h-4'
+			className={`${
+				stopScroll ? 'touch-none' : 'touch-auto'
+			} group overflow-hidden relative h-[700px] w-full aspect-w-16 aspect-h-4`}
 		>
 			<div
 				style={{

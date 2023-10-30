@@ -9,9 +9,10 @@ import IImage from '@/interfaces/IImage';
 
 type Props = {
 	image: IImage;
+	priority: boolean;
 };
 
-export default function ImageModal({ image }: Props) {
+export default function ImageModal({ image, priority }: Props) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	function openModal() {
@@ -29,6 +30,7 @@ export default function ImageModal({ image }: Props) {
 						src={image.url}
 						alt={image.alt}
 						fill
+						priority={priority}
 						sizes='(min-width: 1380px) 306px, (min-width: 1060px) calc(18.33vw + 57px), (min-width: 800px) calc(33.33vw - 16px), (min-width: 540px) calc(50vw - 20px), calc(100vw - 32px)'
 						className='object-cover hover:scale-110 transition-transform'
 					/>

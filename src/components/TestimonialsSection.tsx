@@ -14,9 +14,10 @@ type Props = {
 export default function TestimonialsSection({ data }: Props) {
 	const [isOpenArray, setIsOpenArray] = useState(data.map(() => false));
 
-	const { slideIndex, goToSlide, swipeable } = useSlider<ITestimonial>(data, {
-		timer: 8,
-	});
+	const { slideIndex, goToSlide, swipeable, stopScroll } =
+		useSlider<ITestimonial>(data, {
+			timer: 8,
+		});
 
 	function openModal(index: number) {
 		const updatedIsOpenArray = [...isOpenArray];
@@ -41,7 +42,9 @@ export default function TestimonialsSection({ data }: Props) {
 				style={{
 					transform: `translateX(calc(-${slideIndex * 102}%))`,
 				}}
-				className='w-full md:w-11/12 flex gap-[2%] transition-transform duration-300 ease-in-out'
+				className={`${
+					stopScroll ? 'touch-none' : 'touch-auto'
+				} w-full md:w-11/12 flex gap-[2%] transition-transform duration-300 ease-in-out`}
 			>
 				{data.map((testimonial, i) => {
 					const date = new Date(testimonial.reviewDate);

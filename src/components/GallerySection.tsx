@@ -20,8 +20,8 @@ export default function GallerySection({ gallery, limit, start, end }: Props) {
 				type='page'
 			/>
 			<Wrapper className='grid gap-2 grid-cols-gallery mb-10'>
-				{gallery.imageGallery.map(image => (
-					<ImageModal key={image._key} image={image} />
+				{gallery.imageGallery.map((image, index) => (
+					<ImageModal key={image._key} image={image} priority={index === 0} />
 				))}
 			</Wrapper>
 

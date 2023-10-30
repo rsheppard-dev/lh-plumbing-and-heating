@@ -16,14 +16,16 @@ export default function useSlider<T>(
 	const timerRef = useRef<ReturnType<typeof setTimeout>>();
 	const [slideIndex, setSlideIndex] = useState(0);
 	const [direction, setDirection] = useState(1);
+	const [stopScroll, setStopScroll] = useState(false);
 
 	const isFirstSlide = slideIndex === 0;
 	const isLastSlide = slideIndex === slides.length - 1;
 
 	const swipeable = useSwipeable({
+		onSwipeStart: () => setStopScroll(true),
+		onSwiped: () => setStopScroll(false),
 		onSwipedLeft: () => !isLastSlide && nextSlide(),
 		onSwipedRight: () => !isFirstSlide && previousSlide(),
-		preventScrollOnSwipe: true,
 		trackMouse: true,
 		swipeDuration: 500,
 	});
@@ -81,5 +83,6 @@ export default function useSlider<T>(
 		previousSlide,
 		goToSlide,
 		swipeable,
+		stopScroll,
 	};
 }
