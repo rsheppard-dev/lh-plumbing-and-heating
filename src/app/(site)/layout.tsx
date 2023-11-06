@@ -88,9 +88,15 @@ export default async function RootLayout({ children }: Props) {
 			<body
 				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50 flex flex-col min-h-screen overflow-x-hidden`}
 			>
-				<Header settings={settings} />
-				<main className='grow'>{children}</main>
-				<Footer settings={settings} />
+				<Suspense>
+					<Header settings={settings} />
+				</Suspense>
+				<main className='grow'>
+					<Suspense>{children}</Suspense>
+				</main>
+				<Suspense>
+					<Footer settings={settings} />
+				</Suspense>
 				<Suspense>
 					<CookieBanner />
 				</Suspense>
