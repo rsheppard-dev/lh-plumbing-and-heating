@@ -21,7 +21,7 @@
 		"clsx": "^2.0.0",
 		"formik": "^2.4.5",
 		"lottie-react": "^2.4.0",
-		"next": "13.3.4",
+		"next": "13.5.4",
 		"next-sanity": "^5.5.10",
 		"nodemailer": "^6.9.7",
 		"nodemailer-smtp-transport": "^2.7.4",
