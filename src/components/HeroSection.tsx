@@ -2,7 +2,7 @@ import Slider from './Slider';
 import Link from 'next/link';
 import IHomePage from '@/interfaces/IHomePage';
 
-export default function Hero({ data }: { data: IHomePage }) {
+export default function HeroSection({ data }: { data: IHomePage }) {
 	const {
 		sliderImages,
 		autoSlide,
