@@ -17,12 +17,9 @@ export async function sanityFetch<QueryResponse>({
 	params?: QueryParams;
 	tags?: string[];
 }): Promise<QueryResponse> {
-	const isDevelopment = process.env.NODE_ENV === 'development';
-
 	return client
 		.withConfig({ useCdn: true })
 		.fetch<QueryResponse>(query, params, {
-			cache: isDevelopment ? undefined : 'force-cache',
 			token,
 			next: {
 				revalidate: 30,
