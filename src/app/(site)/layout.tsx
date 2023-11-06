@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer';
 import '../globals.css';
 import Header from '@/components/Header';
-import SearchParamsFallback from '@/components/SearchParamsFallback';
 import { Montserrat, Source_Sans_3 } from 'next/font/google';
 import { ReactNode, Suspense } from 'react';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
@@ -83,7 +82,7 @@ export default async function RootLayout({ children }: Props) {
 	const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string;
 	return (
 		<html lang='en'>
-			<Suspense fallback={<SearchParamsFallback />}>
+			<Suspense>
 				<Analytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
 			</Suspense>
 			<body
