@@ -3,6 +3,8 @@ import Wrapper from './Wrapper';
 import IGallery from '@/interfaces/IGallery';
 import ImageModal from './ImageModal';
 import PaginationControls from './PaginationControls';
+import { Suspense } from 'react';
+import SearchParamsFallback from './SearchParamsFallback';
 
 type Props = {
 	gallery: IGallery;
@@ -26,12 +28,14 @@ export default function GallerySection({ gallery, limit, start, end }: Props) {
 			</Wrapper>
 
 			{limit < gallery.totalImages ? (
-				<PaginationControls
-					hasNextPage={end < gallery.totalImages}
-					hasPreviousPage={start > 0}
-					totalResults={gallery.totalImages}
-					resultsPerPage={gallery.limit}
-				/>
+				<Suspense fallback={<SearchParamsFallback />}>
+					<PaginationControls
+						hasNextPage={end < gallery.totalImages}
+						hasPreviousPage={start > 0}
+						totalResults={gallery.totalImages}
+						resultsPerPage={gallery.limit}
+					/>
+				</Suspense>
 			) : null}
 		</section>
 	);

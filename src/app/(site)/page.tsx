@@ -21,7 +21,6 @@ import ITestimonial from '@/interfaces/ITestimonial';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ISettings from '@/interfaces/ISettings';
 import IContact from '@/interfaces/IContact';
-import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {

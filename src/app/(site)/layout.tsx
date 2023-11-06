@@ -1,8 +1,9 @@
 import Footer from '@/components/Footer';
 import '../globals.css';
 import Header from '@/components/Header';
+import SearchParamsFallback from '@/components/SearchParamsFallback';
 import { Montserrat, Source_Sans_3 } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import ISettings from '@/interfaces/ISettings';
 import { settingsQuery } from '@/sanity/lib/queries';
@@ -82,7 +83,9 @@ export default async function RootLayout({ children }: Props) {
 	const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string;
 	return (
 		<html lang='en'>
-			<Analytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+			<Suspense fallback={<SearchParamsFallback />}>
+				<Analytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+			</Suspense>
 			<body
 				className={`${montserrat.variable} ${sourceSans.variable} bg-slate-50 flex flex-col min-h-screen overflow-x-hidden`}
 			>
