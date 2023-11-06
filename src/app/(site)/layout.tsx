@@ -91,7 +91,9 @@ export default async function RootLayout({ children }: Props) {
 				<Header settings={settings} />
 				<main className='grow'>{children}</main>
 				<Footer settings={settings} />
-				<CookieBanner />
+				<Suspense>
+					<CookieBanner />
+				</Suspense>
 			</body>
 		</html>
 	);
