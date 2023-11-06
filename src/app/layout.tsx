@@ -1,5 +1,5 @@
 import { ReactNode, Suspense } from 'react';
-import '../globals.css';
+import './globals.css';
 
 type Props = {
 	children: ReactNode;
