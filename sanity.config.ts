@@ -21,12 +21,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET as string;
 const basePath = process.env.NEXT_PUBLIC_SANITY_BASE_PATH as string;
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API as string;
 
-const singletonActions = new Set([
-	'publish',
-	'discardChanges',
-	'restore',
-	'preview',
-]);
+const singletonActions = new Set(['publish', 'discardChanges', 'restore']);
 
 const singletonTypes = new Set([
 	'homePage',
