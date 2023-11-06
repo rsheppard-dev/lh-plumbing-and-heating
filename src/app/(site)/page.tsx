@@ -1,17 +1,7 @@
 import HeroSection from '@/components/HeroSection';
-const DynamicContactSection = dynamic(
-	() => import('@/components/ContactSection'),
-	{
-		loading: () => <p>Loading...</p>,
-	}
-);
-const DynamicServicesSection = dynamic(
-	() => import('@/components/ServicesSection'),
-	{
-		loading: () => <p>Loading...</p>,
-	}
-);
 import AboutSection from '../../components/AboutSection';
+import ServicesSection from '../components/ServicesSection';
+import ContactSection from '../components/ContactSection';
 import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import {
 	aboutQuery,
@@ -92,8 +82,8 @@ export default async function Home() {
 			<AboutSection data={aboutData} />
 			<Certifications data={certificationData} />
 			<TestimonialsSection data={testimonialsData} />
-			<DynamicServicesSection data={servicesData} />
-			<DynamicContactSection settings={settingsData} contact={contactData} />
+			<ServicesSection data={servicesData} />
+			<ContactSection settings={settingsData} contact={contactData} />
 		</>
 	);
 }
