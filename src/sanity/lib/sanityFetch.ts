@@ -1,7 +1,6 @@
 import 'server-only';
 
 import type { QueryParams } from 'next-sanity';
-import { draftMode } from 'next/headers';
 import { client } from '@/sanity/lib/client';
 
 const DEFAULT_PARAMS = {} as QueryParams;
@@ -18,25 +17,15 @@ export async function sanityFetch<QueryResponse>({
 	params?: QueryParams;
 	tags?: string[];
 }): Promise<QueryResponse> {
-	const isDraftMode = draftMode().isEnabled;
-	if (isDraftMode && !token) {
-		throw new Error(
-			'The `SANITY_API_READ_TOKEN` environment variable is required.'
-		);
-	}
-
 	const isDevelopment = process.env.NODE_ENV === 'development';
 
 	return client
 		.withConfig({ useCdn: true })
 		.fetch<QueryResponse>(query, params, {
-			cache: isDevelopment || isDraftMode ? undefined : 'force-cache',
-			...(isDraftMode && {
-				token: token,
-				perspective: 'previewDrafts',
-			}),
+			cache: isDevelopment ? undefined : 'force-cache',
+			token,
 			next: {
-				...(isDraftMode && { revalidate: 30 }),
+				revalidate: 30,
 				tags,
 			},
 		});

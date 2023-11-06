@@ -12,7 +12,7 @@ const DynamicServicesSection = dynamic(
 	}
 );
 import AboutSection from '../../components/AboutSection';
-import { sanityFetch, token } from '@/sanity/lib/sanityFetch';
+import { sanityFetch } from '@/sanity/lib/sanityFetch';
 import {
 	aboutQuery,
 	certificationQuery,
@@ -22,12 +22,8 @@ import {
 	settingsQuery,
 	testimonialQuery,
 } from '@/sanity/lib/queries';
-import { draftMode } from 'next/headers';
-import PreviewProvider from '@/components/PreviewProvider';
-import PreviewHeroSection from '@/components/PreviewHeroSection';
 import IHomePage from '@/interfaces/IHomePage';
 import IAbout from '@/interfaces/IAbout';
-import PreviewAboutSection from '@/components/PreviewAboutSection';
 import Certifications from '@/components/Certifications';
 import ICertification from '@/interfaces/ICertification';
 import IService from '@/interfaces/IService';
@@ -89,16 +85,7 @@ export default async function Home() {
 		testimonialsPromise,
 		settingsPromise,
 	]);
-	const isDraftMode = draftMode().isEnabled;
 
-	if (isDraftMode && token) {
-		return (
-			<PreviewProvider token={token}>
-				<PreviewHeroSection data={homeData} />
-				<PreviewAboutSection data={aboutData} />
-			</PreviewProvider>
-		);
-	}
 	return (
 		<>
 			<HeroSection data={homeData} />
