@@ -8,10 +8,7 @@ type Props = {
 	data: IService;
 };
 
-export default async function ServicesSection({
-	type = 'section',
-	data,
-}: Props) {
+export default function ServicesSection({ type = 'section', data }: Props) {
 	const { heading, subheading, services } = data;
 
 	return (
