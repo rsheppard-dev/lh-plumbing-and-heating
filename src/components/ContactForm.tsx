@@ -77,7 +77,6 @@ export default function ContactForm({ successMessage }: Props) {
 					netlify-honeypot='companyName'
 					data-netlify='true'
 				>
-					<Field type='hidden' name='companyName' />
 					<Field type='hidden' name='form-name' value='contact' />
 					<div className='flex flex-col gap-2'>
 						<label
