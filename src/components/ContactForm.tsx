@@ -74,6 +74,7 @@ export default function ContactForm({ successMessage }: Props) {
 			{({ isSubmitting }) => (
 				<Form
 					className='px-6 py-3 sm:px-8 sm:py-4 bg-brand-blue space-y-4'
+					action='/contact.html'
 					netlify-honeypot='bot-field'
 					data-netlify='true'
 				>

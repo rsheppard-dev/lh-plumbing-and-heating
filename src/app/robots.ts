@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
 		rules: {
 			userAgent: '*',
 			allow: '/',
-			disallow: '/admin/',
+			disallow: ['/admin/', '/contact.html'],
 		},
 		sitemap: 'https://www.lhplumbing-harrow.co.uk/sitemap.xml',
 	};
