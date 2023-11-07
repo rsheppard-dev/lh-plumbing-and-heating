@@ -5,6 +5,7 @@ import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { contactSchema, type ContactInput } from '@/lib/validations';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaThumbsUp } from 'react-icons/fa';
+import { encode } from '@/lib/utils';
 
 type Props = {
 	successMessage: string;
@@ -38,17 +39,13 @@ export default function ContactForm({ successMessage }: Props) {
 			resetForm: () => void;
 		}
 	) {
-		// honeypot spam prevention
-		if (values.companyName === '') return;
-		delete values?.companyName;
-
 		try {
-			fetch('/api/contact', {
+			fetch('/', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
+					'Content-Type': 'application/x-www-form-urlencoded',
 				},
-				body: JSON.stringify(values),
+				body: encode({ 'form-name': 'contact', ...values }),
 			});
 
 			resetForm();
@@ -63,6 +60,8 @@ export default function ContactForm({ successMessage }: Props) {
 	return (
 		<Formik
 			initialValues={{
+				companyName: '',
+				'form-name': 'contact',
 				firstName: '',
 				lastName: '',
 				phone: '',
@@ -73,8 +72,13 @@ export default function ContactForm({ successMessage }: Props) {
 			onSubmit={handleSubmit}
 		>
 			{({ isSubmitting }) => (
-				<Form className='px-6 py-3 sm:px-8 sm:py-4 bg-brand-blue space-y-4'>
-					<Field type='hidden' name='companyName' id='companyName' />
+				<Form
+					className='px-6 py-3 sm:px-8 sm:py-4 bg-brand-blue space-y-4'
+					netlify-honeypot='bot-field'
+					data-netlify='true'
+				>
+					<Field type='hidden' name='companyName' />
+					<Field type='hidden' name='form-name' value='contact' />
 					<div className='flex flex-col gap-2'>
 						<label
 							className='font-sourceSans font-bold text-sm text-white'
