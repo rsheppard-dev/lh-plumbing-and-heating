@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import './globals.css';
 
 type Props = {
@@ -8,9 +8,7 @@ type Props = {
 export default async function RootLayout({ children }: Props) {
 	return (
 		<html lang='en'>
-			<body>
-				<Suspense>{children}</Suspense>
-			</body>
+			<body>{children}</body>
 		</html>
 	);
 }
