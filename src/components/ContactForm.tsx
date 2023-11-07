@@ -40,7 +40,7 @@ export default function ContactForm({ successMessage }: Props) {
 		}
 	) {
 		try {
-			fetch('/', {
+			fetch('/contact.html', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
@@ -74,8 +74,7 @@ export default function ContactForm({ successMessage }: Props) {
 			{({ isSubmitting }) => (
 				<Form
 					className='px-6 py-3 sm:px-8 sm:py-4 bg-brand-blue space-y-4'
-					action='/contact.html'
-					netlify-honeypot='bot-field'
+					netlify-honeypot='companyName'
 					data-netlify='true'
 				>
 					<Field type='hidden' name='companyName' />
